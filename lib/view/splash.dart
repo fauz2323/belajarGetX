@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:profmoonv2/controller/splashController.dart';
-import 'package:profmoonv2/view/home/home.dart';
 
 class Splash extends StatelessWidget {
   final splashController = Get.put(SplashController());
