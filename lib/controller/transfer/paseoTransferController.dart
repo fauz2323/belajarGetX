@@ -30,10 +30,15 @@ class PaseoTransferController extends GetxController {
     keyToken = await storage.read(key: 'key');
     Map body = {'walletAddress': adressTron};
     final response = await http.post(uri2, body: body);
+    var jsondata = json.decode(response.body);
     balance = Paseo.fromJson(json.decode(response.body));
-    balance1 = int.parse(balance
-            .data!.trc20Assets!.last.tng5J6Ihg3EskS6PvtefXnbcCd2FZipPe6!) /
-        100000000;
+    if (jsondata['data']['trc20Assets'].length != 0) {
+      balance1 = int.parse(balance
+              .data!.trc20Assets!.last.tng5J6Ihg3EskS6PvtefXnbcCd2FZipPe6!) /
+          100000000;
+    } else {
+      balance1 = "Not Active";
+    }
 
     load.value = false;
   }

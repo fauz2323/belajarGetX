@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:profmoonv2/controller/home/homeController.dart';
 import 'package:profmoonv2/view/home/home.dart';
 import 'package:profmoonv2/view/home/information.dart';
+import 'package:profmoonv2/view/setting/setting.dart';
 
 class Homes extends StatelessWidget {
   final homeController = Get.put(HomesController());
@@ -50,8 +51,7 @@ class Homes extends StatelessWidget {
             children: [
               Home(),
               Information(),
-              Home(),
-              Information(),
+              Setting(),
             ],
           ),
         ),
@@ -61,14 +61,6 @@ class Homes extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
                 label: "Home",
-              ),
-              BottomNavigationBarItem(
-                icon: Image.asset(
-                  'asset/image/dogev2.png',
-                  height: 30,
-                  width: 30,
-                ),
-                label: "DOGECHAIN",
               ),
               BottomNavigationBarItem(
                 icon: Image.asset(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:profmoonv2/view/network/networkUser.dart';
 import 'package:profmoonv2/view/transfer/transfer.dart';
 import 'package:profmoonv2/view/widget/homeMenu.dart';
 import 'package:get/get.dart';
@@ -74,7 +75,9 @@ class MenuPage extends StatelessWidget {
                 ),
                 HomeMenu(
                   icon: Icons.ac_unit,
-                  fun: () {},
+                  fun: () {
+                    Get.to(NetWorkUser());
+                  },
                   title: "Network",
                 ),
               ],

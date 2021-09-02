@@ -27,13 +27,13 @@ class SplashController extends GetxController {
       PackageInfo packageInfo = await PackageInfo.fromPlatform();
       String version = packageInfo.version;
       final res = await http.get(uri);
-      var a = await storage.read(key: 'key');
+      var a = await storage.read(key: 'key') ?? '';
       final data = json.decode(res.body);
       print("res : $a");
       print(version);
 
       if (version.toString() == data['version']) {
-        if (a == null) {
+        if (a == '') {
           print("1");
           Get.off(Login());
         } else {
