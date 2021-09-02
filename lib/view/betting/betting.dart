@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:profmoonv2/controller/betting/multiplyController.dart';
+import 'package:profmoonv2/view/betting/dalembert.dart';
+import 'package:profmoonv2/view/betting/fibonacci.dart';
+import 'package:profmoonv2/view/betting/labuchere.dart';
+import 'package:profmoonv2/view/betting/martiangle.dart';
 import 'package:profmoonv2/view/widget/multiplyMenu.dart';
 
 class Multiply extends StatelessWidget {
@@ -39,7 +43,9 @@ class Multiply extends StatelessWidget {
                             ? () {
                                 multiplyController.status();
                               }
-                            : () {},
+                            : () {
+                                Get.off(Martiangle());
+                              },
                       ),
                       BetMenu(
                         text: "D'ALEMBERT",
@@ -48,7 +54,9 @@ class Multiply extends StatelessWidget {
                             ? () {
                                 multiplyController.status();
                               }
-                            : () {},
+                            : () {
+                                Get.off(Dalembert());
+                              },
                       ),
                       BetMenu(
                         text: "FIBBONACI",
@@ -56,7 +64,9 @@ class Multiply extends StatelessWidget {
                             ? () {
                                 multiplyController.status();
                               }
-                            : () {},
+                            : () {
+                                Get.off(Fibonacci());
+                              },
                         icon: Icons.update,
                       ),
                       BetMenu(
@@ -65,7 +75,9 @@ class Multiply extends StatelessWidget {
                             ? () {
                                 multiplyController.status();
                               }
-                            : () {},
+                            : () {
+                                Get.off(Labouchere());
+                              },
                         icon: Icons.access_alarm,
                       ),
                     ],

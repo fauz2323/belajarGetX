@@ -35,4 +35,12 @@ class NetworkController extends GetxController {
     super.onInit();
     init();
   }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    print("dispose Object");
+
+    super.onClose();
+  }
 }

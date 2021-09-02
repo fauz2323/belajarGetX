@@ -33,7 +33,9 @@ class PaseoTransfer extends StatelessWidget {
                             Radius.circular(10),
                           )),
                       child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            paseoTransferController.scan();
+                          },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
