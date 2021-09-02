@@ -50,8 +50,7 @@ class LoginController extends GetxController {
       await storage.write(key: "key", value: data?.token);
       await storage.write(key: 'tronAdress', value: data?.tronAdress);
       await storage.write(key: 'privatkey', value: data?.key);
-      await storage.write(
-          key: "data", value: data?.dataUser?.sessionCookie.toString());
+
       load.value = false;
       Get.off(Homes());
     } else if (response.statusCode == 301) {

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:profmoonv2/view/betting/betting.dart';
 import 'package:profmoonv2/view/network/networkUser.dart';
+import 'package:profmoonv2/view/reffRegis/reffRegis.dart';
 import 'package:profmoonv2/view/transfer/transfer.dart';
+import 'package:profmoonv2/view/wallet/walletAdress.dart';
 import 'package:profmoonv2/view/widget/homeMenu.dart';
 import 'package:get/get.dart';
 
@@ -55,7 +58,11 @@ class MenuPage extends StatelessWidget {
                 ),
                 HomeMenu(
                   title: "Deposit Address",
-                  fun: () {},
+                  fun: () {
+                    Get.off(WalletAddress(
+                      name: "Deposit Adress",
+                    ));
+                  },
                   icon: Icons.qr_code_rounded,
                 ),
                 HomeMenu(
@@ -65,12 +72,18 @@ class MenuPage extends StatelessWidget {
                 ),
                 HomeMenu(
                   icon: Icons.ac_unit,
-                  fun: () {},
+                  fun: () {
+                    Get.to(ReffRegis(
+                      reff: reff,
+                    ));
+                  },
                   title: "Register",
                 ),
                 HomeMenu(
                   icon: Icons.ac_unit,
-                  fun: () {},
+                  fun: () {
+                    Get.off(Multiply());
+                  },
                   title: "Multiply BOT",
                 ),
                 HomeMenu(

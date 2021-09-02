@@ -8,23 +8,16 @@ class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          splashController.init();
-        },
-      ),
       backgroundColor: Colors.blue,
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "LOGO",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+            Image.asset(
+              'asset/image/logo.png',
+              width: 150,
+              height: 150,
             ),
             SizedBox(
               height: 4,
