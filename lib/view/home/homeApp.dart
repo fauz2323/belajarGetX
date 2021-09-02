@@ -33,13 +33,20 @@ class Homes extends StatelessWidget {
           ),
           elevation: 0,
         ),
-        body: Container(
-          child: PageView(
-            physics: NeverScrollableScrollPhysics(),
-            controller: homeController.controller.value,
-            onPageChanged: (index) {
-              homeController.selectedNavbar.value = index;
-            },
+        // body: PageView(
+        //   onPageChanged: (index) {
+        //     homeController.selectedNavbar.value = index;
+        //   },
+        //   children: [
+        //     Home(),
+        //     Information(),
+        //     Home(),
+        //     Information(),
+        //   ],
+        // ),
+        body: Obx(
+          () => IndexedStack(
+            index: homeController.selectedNavbar.value,
             children: [
               Home(),
               Information(),
