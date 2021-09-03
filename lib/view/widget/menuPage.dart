@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:profmoonv2/view/betting/betting.dart';
 import 'package:profmoonv2/view/network/networkUser.dart';
+import 'package:profmoonv2/view/purchase/purchase.dart';
 import 'package:profmoonv2/view/reffRegis/reffRegis.dart';
 import 'package:profmoonv2/view/transfer/transfer.dart';
 import 'package:profmoonv2/view/wallet/walletAdress.dart';
@@ -57,25 +58,27 @@ class MenuPage extends StatelessWidget {
                   title: "Transfer",
                 ),
                 HomeMenu(
-                  title: "Deposit Address",
+                  title: "Wallet Address",
                   fun: () {
-                    Get.off(WalletAddress(
-                      name: "Deposit Adress",
-                    ));
+                    Get.to(() => WalletAddress(
+                          name: "Wallet Adress",
+                        ));
                   },
                   icon: Icons.qr_code_rounded,
                 ),
                 HomeMenu(
                   icon: Icons.ac_unit,
-                  fun: () {},
+                  fun: () {
+                    Get.to(() => Purchase());
+                  },
                   title: "Purchase",
                 ),
                 HomeMenu(
                   icon: Icons.ac_unit,
                   fun: () {
-                    Get.to(ReffRegis(
-                      reff: reff,
-                    ));
+                    Get.to(() => ReffRegis(
+                          reff: reff,
+                        ));
                   },
                   title: "Register",
                 ),

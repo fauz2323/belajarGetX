@@ -30,6 +30,6 @@ class WalletAdressController extends GetxController {
   void onClose() {
     // TODO: implement onClose
     super.onClose();
-    proses();
+    print("object");
   }
 }

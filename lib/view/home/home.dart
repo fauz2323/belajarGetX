@@ -39,10 +39,14 @@ class Home extends StatelessWidget {
                               fontSize: 18,
                             ),
                           ),
-                          IconButton(
-                              icon: Icon(Icons.edit_outlined,
-                                  color: Colors.white),
-                              onPressed: () {}),
+                          Text(
+                            "( ${homeAppController.data!.user!.status} )",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w200,
+                              fontSize: 18,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -54,9 +58,9 @@ class Home extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Get.off(WalletAddress(
-                              name: 'TRON',
-                            ));
+                            Get.to(() => WalletAddress(
+                                  name: 'PASEO',
+                                ));
                           },
                           child: BalanceHome(
                             title: "TRON",
@@ -66,9 +70,9 @@ class Home extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Get.off(WalletAddress(
-                              name: 'PASEO',
-                            ));
+                            Get.to(() => WalletAddress(
+                                  name: 'PASEO',
+                                ));
                           },
                           child: BalanceHome(
                             title: "PASEO",

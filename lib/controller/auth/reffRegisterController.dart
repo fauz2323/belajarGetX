@@ -67,4 +67,11 @@ class ReffRegisterController extends GetxController {
     // init();
     // refController.value = TextEditingController(text: '$reff');
   }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+    print("close Object");
+  }
 }
