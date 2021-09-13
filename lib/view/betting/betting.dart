@@ -44,7 +44,7 @@ class Multiply extends StatelessWidget {
                                 multiplyController.status();
                               }
                             : () {
-                                Get.off(Martiangle());
+                                Get.to(() => Martiangle());
                               },
                       ),
                       BetMenu(
@@ -55,7 +55,7 @@ class Multiply extends StatelessWidget {
                                 multiplyController.status();
                               }
                             : () {
-                                Get.off(Dalembert());
+                                Get.to(() => Dalembert());
                               },
                       ),
                       BetMenu(
@@ -65,7 +65,7 @@ class Multiply extends StatelessWidget {
                                 multiplyController.status();
                               }
                             : () {
-                                Get.off(Fibonacci());
+                                Get.to(() => Fibonacci());
                               },
                         icon: Icons.update,
                       ),
@@ -76,7 +76,7 @@ class Multiply extends StatelessWidget {
                                 multiplyController.status();
                               }
                             : () {
-                                Get.off(Labouchere());
+                                Get.to(() => Labouchere());
                               },
                         icon: Icons.access_alarm,
                       ),

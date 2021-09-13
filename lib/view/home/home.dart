@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            "( ${homeAppController.data!.user!.status} )",
+                            "( ${homeAppController.data!.status} )",
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w200,
@@ -88,6 +88,7 @@ class Home extends StatelessWidget {
                   ),
                   Expanded(
                     child: MenuPage(
+                      status: homeAppController.data!.status,
                       reff: homeAppController.data!.user!.username,
                     ),
                   ),

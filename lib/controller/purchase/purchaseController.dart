@@ -18,6 +18,7 @@ class PurchaseController extends GetxController {
   var paseoBalance = ''.obs;
   var tronBalance = ''.obs;
   var cost = ''.obs;
+  var text = ''.obs;
   var onn = false.obs;
 
   init() async {
@@ -67,11 +68,13 @@ class PurchaseController extends GetxController {
       purchase = Purchasecost.fromJson(json.decode(response.body));
     }
 
-    if (double.parse(tronBalance.value) < 6 &&
+    if (double.parse(tronBalance.value) < 6 ||
         double.parse(paseoBalance.value) < int.parse(purchase.cost)) {
       onn.value = true;
+      text.value = 'Balance insufficient';
     } else {
       onn.value = false;
+      text.value = "Pay Now";
     }
 
     load.value = false;
@@ -91,6 +94,9 @@ class PurchaseController extends GetxController {
     print(purchase.cost);
 
     final response = await http.post(uri2, body: body);
+    if (response.statusCode == 200) {
+      final response2 = await http.get(uri);
+    }
   }
 
   @override

@@ -12,8 +12,9 @@ class MenuPage extends StatelessWidget {
   final reff;
   final token;
   final balance;
+  final status;
 
-  const MenuPage({Key? key, this.token, this.balance, this.reff})
+  const MenuPage({Key? key, this.token, this.balance, this.reff, this.status})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -68,9 +69,16 @@ class MenuPage extends StatelessWidget {
                 ),
                 HomeMenu(
                   icon: Icons.ac_unit,
-                  fun: () {
-                    Get.to(() => Purchase());
-                  },
+                  fun: (status == 'paid')
+                      ? () {
+                          Get.snackbar("Message", 'You is paid user');
+                        }
+                      : () {
+                          print(status);
+                          Get.to(() => Purchase(
+                                status: status,
+                              ));
+                        },
                   title: "Purchase",
                 ),
                 HomeMenu(

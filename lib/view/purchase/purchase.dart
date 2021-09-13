@@ -3,8 +3,9 @@ import 'package:get/get.dart';
 import 'package:profmoonv2/controller/purchase/purchaseController.dart';
 
 class Purchase extends StatelessWidget {
+  final status;
   final PurchaseController purchaseController = Get.put(PurchaseController());
-  Purchase({Key? key}) : super(key: key);
+  Purchase({Key? key, this.status}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -74,11 +75,12 @@ class Purchase extends StatelessWidget {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        ),
-                        color: Colors.blue,
-                      ),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                          color: (purchaseController.onn.value)
+                              ? Colors.red
+                              : Colors.blue),
                       child: Material(
                         color: Colors.transparent,
                         child: InkWell(
@@ -91,7 +93,10 @@ class Purchase extends StatelessWidget {
                           child: Padding(
                             padding: EdgeInsets.only(
                                 bottom: 10, top: 10, left: 40, right: 40),
-                            child: Text("Pay Now"),
+                            child: Text(purchaseController.text.value,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold)),
                           ),
                         ),
                       ),

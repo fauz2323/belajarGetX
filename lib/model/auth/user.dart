@@ -1,11 +1,14 @@
 class Data {
   Data({
+    required this.status,
     this.user,
   });
 
   final User? user;
+  String status;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
+        status: json['status'],
         user: User.fromJson(json["user"]),
       );
 }
@@ -16,7 +19,6 @@ class User {
     this.name,
     this.username,
     required this.email,
-    required this.status,
     this.joinDate,
   });
 
@@ -25,13 +27,11 @@ class User {
   String? username;
   String email;
   String? joinDate;
-  String status;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
       id: json["id"],
       name: json["name"],
       username: json["username"],
       email: json['email'],
-      status: json['status'],
       joinDate: json['joinDate']);
 }
