@@ -12,11 +12,14 @@ class FibbonacciProsesController extends GetxController {
   var graph = <Grafik>[].obs;
   var balance1 = 0.0.obs;
   var stop = true.obs, load = true.obs;
+  var profit = 0.obs;
+  var start = Get.arguments['start'];
+
 
   init() async {
     var uri = Uri.parse("uri");
     int number = 0;
-    int reset;
+    int reset=0;
     int posisi = 1;
     do {
       print("object11");
@@ -26,39 +29,41 @@ class FibbonacciProsesController extends GetxController {
       var pay = json.decode(response2.body);
       if (pay['PayOut'] == 0) {
         if (number > 9) {
-          reset = widget.start * data[number];
-          prof = prof - reset;
+          reset = start * data[number];
+          profit.value = profit.value - reset;
           posisi++;
         } else {
-          number = number + widget.down;
-          prof = prof - reset;
+          number = number + 1;
+          profit.value = profit.value - reset;
           posisi++;
 
-          reset = widget.start * data[number];
+          reset = start * data[number];
         }
       } else {
         if (number == 0) {
-          prof = prof + reset;
+          profit.value = profit.value + reset;
 
           posisi++;
-          reset = widget.start * data[number];
+          reset = start * data[number];
         } else {
           posisi++;
-          number = number - widget.up;
-          prof = prof + reset;
+          number = number - 1;
+          profit.value = profit.value + reset;
 
-          reset = widget.start * data[number];
+          reset = start * data[number];
         }
       }
 
       print(number);
-      graph.add(Grafik(posisi, prof));
+      graph.add(Grafik(posisi, profit.value));
       await Future.delayed(Duration(seconds: 1), () async {
-        final response3 = await http.post(uri, body: body3);
-        balance1 = json.decode(response3.body)['Balance'];
-        dataBet.add(Bet.fromJson(pay));
+        // final response3 = await http.post(uri, body: body3);
+        // balance1 = json.decode(response3.body)['Balance'];
+        // dataBet.add(Bet.fromJson(pay));
         load.value = false;
       });
-    } while (balance1 > widget.loss && widget.target > balance1 && stop);
+    } while (balance1 > Get.arguments['loss'] &&
+          Get.arguments['target'] > balance1 &&
+          stop.value);
   }
 }

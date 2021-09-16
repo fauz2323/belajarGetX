@@ -20,9 +20,14 @@ class Register extends StatelessWidget {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        SizedBox(
-                          height: 10,
+                        Image(
+                          image: AssetImage('asset/image/logo.png'),
+                          height: 100,
+                          width: 100,
                         ),
+                        // SizedBox(
+                        //   height: 10,
+                        // ),
                         Center(
                           child: Text(
                             "REGISTER",

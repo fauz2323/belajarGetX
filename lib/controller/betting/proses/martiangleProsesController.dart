@@ -12,7 +12,7 @@ class MartiangleProsesCOntroller extends GetxController {
   var menang;
   var balance1 = 0.0.obs;
   var stop = true.obs, load = true.obs;
-  var graph = <Grafik>[Grafik(2, 3), Grafik(3, 4), Grafik(4, 5)].obs;
+  var graph = <Grafik>[].obs;
   var reset = 0.obs;
   var profit = 0.obs;
   var graphPosition = 0.obs;

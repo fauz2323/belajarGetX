@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:profmoonv2/controller/betting/proses/fibonacciprosesController.dart';
+import 'package:get/get.dart';
+import 'package:profmoonv2/controller/betting/proses/labouchereProsesController.dart';
 import 'package:profmoonv2/model/graph/graph.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:get/get.dart';
 
-class FibonacciProses extends StatelessWidget {
-  final FibbonacciProsesController fibbonacciProsesController =
-      Get.put(FibbonacciProsesController());
-  FibonacciProses({Key? key}) : super(key: key);
+class LabouchereProses extends StatelessWidget {
+  final LabouchereProsesController labouchereProsesController =
+      Get.put(LabouchereProsesController());
+  LabouchereProses({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
+        title: Text("Labouchere"),
         centerTitle: true,
-        title: Text("Tittle"),
+        elevation: 0,
       ),
       body: Container(
         child: Column(
@@ -39,7 +39,7 @@ class FibonacciProses extends StatelessWidget {
                         legend: Legend(isVisible: false),
                         series: <ChartSeries>[
                           LineSeries<Grafik, int>(
-                            dataSource: fibbonacciProsesController.graph,
+                            dataSource: labouchereProsesController.graph,
                             xValueMapper: (Grafik g, _) => g.x,
                             yValueMapper: (Grafik g, _) => g.y,
                           )

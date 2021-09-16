@@ -36,11 +36,11 @@ class Login extends StatelessWidget {
                     width: 300,
                     child: Column(
                       children: <Widget>[
-                        // Image(
-                        //   image: AssetImage('asset/image/logo.png'),
-                        //   height: 100,
-                        //   width: 100,
-                        // ),
+                        Image(
+                          image: AssetImage('asset/image/logo.png'),
+                          height: 100,
+                          width: 100,
+                        ),
                         SizedBox(
                           height: 10,
                         ),

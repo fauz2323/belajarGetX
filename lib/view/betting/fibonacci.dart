@@ -14,7 +14,7 @@ class Fibonacci extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text("MARTINGALE"),
+        title: Text("FIBONACCI"),
       ),
       body: SingleChildScrollView(
           child: Obx(

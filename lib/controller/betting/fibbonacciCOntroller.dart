@@ -30,7 +30,7 @@ class FibbonacciController extends GetxController {
     });
     print(response.statusCode);
     var jsonz = json.decode(response.body);
-    balance = jsonz['balance'];
+    balance = jsonz['balance'] * 10 / 1000;
     startController = TextEditingController(text: balance.toString());
     load.value = false;
   }
