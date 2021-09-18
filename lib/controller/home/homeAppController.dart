@@ -80,6 +80,8 @@ class HomeAppController extends GetxController {
     }
   }
 
+  check() async {}
+
   @override
   void onInit() {
     // TODO: implement onInit

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -8,6 +9,7 @@ import 'package:profmoonv2/model/purchase/purchase.dart';
 
 class PurchaseController extends GetxController {
   final storage = new FlutterSecureStorage();
+  TextEditingController codeController = TextEditingController();
   var keyToken, tronAdress, privatKey;
   late Purchasecost purchase;
   var load = true.obs;
@@ -67,35 +69,39 @@ class PurchaseController extends GetxController {
     if (response.statusCode == 200) {
       purchase = Purchasecost.fromJson(json.decode(response.body));
     }
-
-    if (double.parse(tronBalance.value) < 6 ||
-        double.parse(paseoBalance.value) < int.parse(purchase.cost)) {
+    if (paseoBalance.value == 'Not Active' ||
+        tronBalance.value == 'Not Active') {
       onn.value = true;
-      text.value = 'Balance insufficient';
+      text.value = 'Paseo Not Active';
     } else {
-      onn.value = false;
-      text.value = "Pay Now";
+      if (double.parse(tronBalance.value) < 6 ||
+          double.parse(paseoBalance.value) < purchase.cost.toDouble()) {
+        onn.value = true;
+        text.value = 'Balance insufficient';
+      } else {
+        onn.value = false;
+        text.value = "Pay Now";
+      }
     }
-
     load.value = false;
     print(tronBalance);
   }
 
-  proses() async {
-    Map body = {
-      'senderAddress': tronAdress,
-      'senderPrivateKey': privatKey,
-      'receiverAddress': purchase.walletAdress,
-      'tokenAmount': purchase.cost,
-    };
-    print(tronAdress);
-    print(privatKey);
-    print(purchase.walletAdress);
-    print(purchase.cost);
+  proses(var code) async {
+    var url = Uri.parse('https://profmoon.com/api/purchase');
 
-    final response = await http.post(uri2, body: body);
+    final response = await http.get(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $keyToken',
+      },
+    );
+
     if (response.statusCode == 200) {
-      final response2 = await http.get(uri);
+      Get.back();
+      Get.snackbar("message", "PAID SUCCESS");
     }
   }
 
@@ -103,7 +109,7 @@ class PurchaseController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    init();
+    // init();
   }
 
   @override

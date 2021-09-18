@@ -5,7 +5,7 @@ class Purchasecost {
   });
 
   String walletAdress;
-  String cost;
+  int cost;
 
   factory Purchasecost.fromJson(Map<String, dynamic> json) => Purchasecost(
         walletAdress: json["walletAdress"],
