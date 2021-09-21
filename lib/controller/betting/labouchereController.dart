@@ -22,7 +22,7 @@ class LabouchereController extends GetxController {
 
   init() async {
     keyToken = await storage.read(key: 'key');
-    var uri = Uri.parse('https://profmoon.com/api/checkbalance');
+    var uri = Uri.parse('https://profmoon.com/api/getBalance');
     final response = await http.get(uri, headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -30,7 +30,7 @@ class LabouchereController extends GetxController {
     });
     print(response.statusCode);
     var jsonz = json.decode(response.body);
-    balance = jsonz['balance'];
+    balance = double.parse(jsonz['Balance']) * 1 / 100;
     startController = TextEditingController(text: balance.toString());
     load.value = false;
   }

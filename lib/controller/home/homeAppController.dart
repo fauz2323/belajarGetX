@@ -13,6 +13,7 @@ class HomeAppController extends GetxController {
   var token;
   var tronAdress;
   var privatKey;
+  late Timer time;
   var paseoBalance = ''.obs;
   String text = "isi";
   var status;
@@ -26,6 +27,7 @@ class HomeAppController extends GetxController {
   Timer? _timer;
   var url = Uri.parse("https://profmoon.com/api/authtest");
   var uri3 = Uri.parse('https://paseo.live/paseo/CekSaldo');
+  var uri2 = Uri.parse('https://profmoon.com/api/getBalance');
 
   init() async {
     token = await storage.read(key: 'key');
@@ -43,41 +45,63 @@ class HomeAppController extends GetxController {
     print("object");
     print(response.statusCode);
     if (response.statusCode == 200) {
-      final response3 = await http.post(
-        uri3,
-        body: {
-          'walletAddress': tronAdress,
-        },
-      );
-      print("setelah ke await ke1");
-      print(json.decode(response3.body));
+      // // final response3 = await http.post(
+      // //   uri3,
+      // //   body: {
+      // //     'walletAddress': tronAdress,
+      // //   },
+      // // );
+      // // print("setelah ke await ke1");
+      // // print(json.decode(response3.body));
 
-      var jsondataPaseo = json.decode(response3.body);
-      if (jsondataPaseo['data']['trxbalance'] == null) {
-        tronBalance.value = "not active";
-        paseoBalance.value = "not active";
-      } else {
-        getBalance = Paseo.fromJson(jsondataPaseo);
-        var balance = getBalance!.data!.trxbalance! / 1000000;
-        tronBalance.value = balance.toString();
+      // // var jsondataPaseo = json.decode(response3.body);
+      // // if (jsondataPaseo['data']['trxbalance'] == null) {
+      // //   tronBalance.value = "not active";
+      // //   paseoBalance.value = "not active";
+      // // } else {
+      // //   getBalance = Paseo.fromJson(jsondataPaseo);
+      // //   var balance = getBalance!.data!.trxbalance! / 1000000;
+      // //   tronBalance.value = balance.toString();
 
-        if (jsondataPaseo['data']['trc20Assets'].length != 0) {
-          var balanceP = int.parse(getBalance!
-                  .data!.trc20Assets![0].tng5J6Ihg3EskS6PvtefXnbcCd2FZipPe6!) /
-              100000000;
-          paseoBalance.value = balanceP.toString();
-        } else {
-          paseoBalance.value = "Not Active";
-        }
-      }
-      // data.add(json.decode(response.body));
+      // //   if (jsondataPaseo['data']['trc20Assets'].length != 0) {
+      // //     var balanceP = int.parse(getBalance!
+      // //             .data!.trc20Assets![0].tng5J6Ihg3EskS6PvtefXnbcCd2FZipPe6!) /
+      // //         100000000;
+      // //     paseoBalance.value = balanceP.toString();
+      // //   } else {
+      // //     paseoBalance.value = "Not Active";
+      // //   }
+      // // }
+      // // // data.add(json.decode(response.body));
       data = Data.fromJson(json.decode(response.body));
       // data.add(json.decode(response.body));
+      final response2 = await http.get(
+        uri2,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
+      tronBalance.value = json.decode(response2.body)['Balance'];
       load.value = false;
     } else {
       await storage.deleteAll();
       Get.off(Login());
     }
+
+    time = Timer.periodic(Duration(seconds: 3), (timer) async {
+      print(11231);
+      // var uri2 = Uri.parse('https://paseo.live/paseo/CekSaldo');
+      // Map body = {
+      //   'walletAddress': tronAdress,
+      // };
+
+      // final response1 = await http.post(uri2, body: body);
+      // final dataJson = json.decode(response1.body);
+      // if (dataJson['data']['trxbalance'] != null ||
+      //     dataJson['data']['trxbalance'] != 0) {}
+    });
   }
 
   check() async {}
@@ -87,5 +111,13 @@ class HomeAppController extends GetxController {
     // TODO: implement onInit
     super.onInit();
     init();
+  }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+    print("Close OBJJS");
+    time.cancel();
   }
 }

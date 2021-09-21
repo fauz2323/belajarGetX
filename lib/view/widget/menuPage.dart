@@ -56,7 +56,7 @@ class MenuPage extends StatelessWidget {
                   fun: () {
                     Get.off(Transfer());
                   },
-                  title: "Transfer",
+                  title: "withdraw",
                 ),
                 HomeMenu(
                   title: "Wallet Address",
@@ -93,7 +93,7 @@ class MenuPage extends StatelessWidget {
                 HomeMenu(
                   icon: Icons.ac_unit,
                   fun: () {
-                    Get.off(Multiply());
+                    Get.to(() => Multiply());
                   },
                   title: "Multiply BOT",
                 ),

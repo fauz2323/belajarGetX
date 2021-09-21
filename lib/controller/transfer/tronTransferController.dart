@@ -11,7 +11,7 @@ import 'package:profmoonv2/view/notifScreen/success.dart';
 class TronsTransferController extends GetxController {
   var uri = Uri.parse("https://paseo.live/paseo/SendTron");
   var uri3 = Uri.parse("https://profmoon.com/api/pin");
-  var uri2 = Uri.parse('https://paseo.live/paseo/CekSaldo');
+  var uri2 = Uri.parse('https://profmoon.com/api/getBalance');
   final storage = new FlutterSecureStorage();
   TextEditingController pinController = TextEditingController();
   Rx<TextEditingController> addressController = TextEditingController().obs;
@@ -26,12 +26,15 @@ class TronsTransferController extends GetxController {
   var privatKey;
 
   loading() async {
+    privatKey = await storage.read(key: 'privatkey');
+
     adressTron = await storage.read(key: 'tronAdress');
     keyToken = await storage.read(key: 'key');
-    Map body = {'walletAddress': adressTron};
-    final response = await http.post(uri2, body: body);
-    balance = Paseo.fromJson(json.decode(response.body));
-    balance1 = balance.data!.trxbalance! / 1000000;
+    final response = await http.get(uri2, headers: {
+      'Authorization': 'Bearer $keyToken',
+    });
+
+    balance1 = double.parse(json.decode(response.body)['Balance']);
 
     load.value = false;
   }
@@ -49,7 +52,6 @@ class TronsTransferController extends GetxController {
   }
 
   proses(var amount, String address, var pin) async {
-    privatKey = await storage.read(key: 'privatkey');
     print("Masuk proses");
     Map body = {
       'senderAddress': adressTron,

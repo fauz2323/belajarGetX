@@ -68,18 +68,18 @@ class Home extends StatelessWidget {
                             balance: homeAppController.tronBalance,
                           ),
                         ),
-                        InkWell(
-                          onTap: () {
-                            Get.to(() => WalletAddress(
-                                  name: 'PASEO',
-                                ));
-                          },
-                          child: BalanceHome(
-                            title: "PASEO",
-                            image: 'asset/image/logopaseo.png',
-                            balance: homeAppController.paseoBalance,
-                          ),
-                        ),
+                        // InkWell(
+                        //   onTap: () {
+                        //     Get.to(() => WalletAddress(
+                        //           name: 'PASEO',
+                        //         ));
+                        //   },
+                        //   child: BalanceHome(
+                        //     title: "PASEO",
+                        //     image: 'asset/image/logopaseo.png',
+                        //     balance: homeAppController.paseoBalance,
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
