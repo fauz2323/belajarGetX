@@ -91,24 +91,30 @@ class Martiangle extends StatelessWidget {
                             95) {
                           Get.snackbar("Message", "Prbability to High");
                         } else {
-                          var target = martiangleController.balance +
+                          var prob = (int.parse(martiangleController
+                                      .probController.text) /
+                                  100 *
+                                  1000) -
+                              1;
+                          var target = martiangleController.balance1 +
                               ((int.parse(martiangleController
                                           .targetController.text) /
                                       100) *
-                                  martiangleController.balance);
-                          var loss = martiangleController.balance -
+                                  martiangleController.balance1);
+                          var loss = martiangleController.balance1 -
                               ((int.parse(martiangleController
                                           .targetController.text) /
                                       100) *
-                                  martiangleController.balance);
+                                  martiangleController.balance1);
 
                           Map argument = {
-                            'prob': martiangleController.probController.text,
+                            'prob': prob.toInt(),
                             'loss': loss,
                             'target': target,
                             'start': martiangleController.startController.text,
                           };
                           Get.to(() => MartiangleProses(), arguments: argument);
+                          // print(argument);
                         }
                       },
                       child: Container(

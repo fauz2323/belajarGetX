@@ -31,50 +31,70 @@ class MartiangleProses extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: 200,
-                    child: SfCartesianChart(
-                        enableSideBySideSeriesPlacement: false,
-                        primaryXAxis: CategoryAxis(),
-                        legend: Legend(isVisible: false),
-                        series: <ChartSeries>[
-                          LineSeries<Grafik, int>(
-                            dataSource: martiangleProsesCOntroller.graph,
-                            xValueMapper: (Grafik g, _) => g.x,
-                            yValueMapper: (Grafik g, _) => g.y,
-                          )
-                        ]),
-                  ),
+                      height: 200,
+                      child: Obx(
+                        () => SfCartesianChart(
+                            enableSideBySideSeriesPlacement: false,
+                            primaryXAxis: CategoryAxis(),
+                            legend: Legend(isVisible: false),
+                            series: <ChartSeries>[
+                              LineSeries<Grafik, int>(
+                                dataSource:
+                                    martiangleProsesCOntroller.graph.value,
+                                xValueMapper: (Grafik g, _) => g.x,
+                                yValueMapper: (Grafik g, _) => g.y,
+                              )
+                            ]),
+                      )),
                 ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 20, right: 20, top: 6, bottom: 6),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [Text("a"), Text("data")],
               ),
             ),
             Expanded(
               child: ListView(
                 scrollDirection: Axis.vertical,
                 children: [
-                  DataTable(columns: [
-                    DataColumn(
-                      label: Text("Bet ID"),
-                    ),
-                    DataColumn(
-                      label: Text("Profit"),
-                    ),
-                  ], rows: [
-                    DataRow(
-                      cells: [
-                        DataCell(
-                          Text("asd"),
+                  Obx(
+                    () => DataTable(
+                      columns: [
+                        DataColumn(
+                          label: Text("Result"),
                         ),
-                        DataCell(
-                          Text("asdasd"),
+                        DataColumn(
+                          label: Text("Profit"),
                         ),
                       ],
+                      rows: martiangleProsesCOntroller.betting
+                          .map(
+                            (datarows) => DataRow(
+                              cells: [
+                                DataCell(
+                                  Text(datarows.result.message),
+                                ),
+                                DataCell(
+                                  Text(datarows.result.payOut.toString()),
+                                )
+                              ],
+                            ),
+                          )
+                          .toList()
+                          .reversed
+                          .toList(),
                     ),
-                  ]),
+                  )
                 ],
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                martiangleProsesCOntroller.stop.value = false;
+              },
               child: Text("STOP"),
               style: ElevatedButton.styleFrom(minimumSize: Size(190, 40)),
             ),

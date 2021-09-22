@@ -1,6 +1,6 @@
 class Grafik {
   final int x;
-  final int y;
+  final double y;
 
   Grafik(this.x, this.y);
 }

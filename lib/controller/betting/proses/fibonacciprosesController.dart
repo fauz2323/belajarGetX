@@ -12,14 +12,13 @@ class FibbonacciProsesController extends GetxController {
   var graph = <Grafik>[].obs;
   var balance1 = 0.0.obs;
   var stop = true.obs, load = true.obs;
-  var profit = 0.obs;
+  var profit = 0.0.obs;
   var start = Get.arguments['start'];
-
 
   init() async {
     var uri = Uri.parse("uri");
     int number = 0;
-    int reset=0;
+    int reset = 0;
     int posisi = 1;
     do {
       print("object11");
@@ -63,7 +62,7 @@ class FibbonacciProsesController extends GetxController {
         load.value = false;
       });
     } while (balance1 > Get.arguments['loss'] &&
-          Get.arguments['target'] > balance1 &&
-          stop.value);
+        Get.arguments['target'] > balance1 &&
+        stop.value);
   }
 }

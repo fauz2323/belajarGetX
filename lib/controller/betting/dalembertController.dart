@@ -20,10 +20,11 @@ class DalembertController extends GetxController {
   var keyToken;
   var balance;
   var load = true.obs;
+  var balance1;
 
   init() async {
     keyToken = await storage.read(key: 'key');
-    var uri = Uri.parse('https://profmoon.com/api/checkbalance');
+    var uri = Uri.parse('https://profmoon.com/api/getBalance');
     final response = await http.get(uri, headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -31,8 +32,10 @@ class DalembertController extends GetxController {
     });
     print(response.statusCode);
     var jsonz = json.decode(response.body);
-    balance = jsonz['balance'];
-    startController = TextEditingController(text: balance.toString());
+    balance = double.parse(jsonz['Balance']) * 1 / 100;
+    balance1 = double.parse(jsonz['Balance']);
+
+    startController = TextEditingController(text: balance.toStringAsFixed(8));
     load.value = false;
   }
 

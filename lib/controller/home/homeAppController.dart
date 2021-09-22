@@ -83,6 +83,7 @@ class HomeAppController extends GetxController {
           'Authorization': 'Bearer $token',
         },
       );
+      print(response2.statusCode);
       tronBalance.value = json.decode(response2.body)['Balance'];
       load.value = false;
     } else {
@@ -90,18 +91,18 @@ class HomeAppController extends GetxController {
       Get.off(Login());
     }
 
-    time = Timer.periodic(Duration(seconds: 3), (timer) async {
-      print(11231);
-      // var uri2 = Uri.parse('https://paseo.live/paseo/CekSaldo');
-      // Map body = {
-      //   'walletAddress': tronAdress,
-      // };
+    // time = Timer.periodic(Duration(seconds: 3), (timer) async {
+    //   print(11231);
+    //   // var uri2 = Uri.parse('https://paseo.live/paseo/CekSaldo');
+    //   // Map body = {
+    //   //   'walletAddress': tronAdress,
+    //   // };
 
-      // final response1 = await http.post(uri2, body: body);
-      // final dataJson = json.decode(response1.body);
-      // if (dataJson['data']['trxbalance'] != null ||
-      //     dataJson['data']['trxbalance'] != 0) {}
-    });
+    //   // final response1 = await http.post(uri2, body: body);
+    //   // final dataJson = json.decode(response1.body);
+    //   // if (dataJson['data']['trxbalance'] != null ||
+    //   //     dataJson['data']['trxbalance'] != 0) {}
+    // });
   }
 
   check() async {}
@@ -118,6 +119,6 @@ class HomeAppController extends GetxController {
     // TODO: implement onClose
     super.onClose();
     print("Close OBJJS");
-    time.cancel();
+    // time.cancel();
   }
 }

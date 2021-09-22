@@ -9,6 +9,7 @@ class MartiangleController extends GetxController {
   final storage = new FlutterSecureStorage();
   var keyToken;
   var balance;
+  var balance1;
   var load = true.obs;
   late TextEditingController startController;
 
@@ -23,7 +24,7 @@ class MartiangleController extends GetxController {
 
   init() async {
     keyToken = await storage.read(key: 'key');
-    var uri = Uri.parse('https://profmoon.com/api/checkbalance');
+    var uri = Uri.parse('https://profmoon.com/api/getBalance');
     final response = await http.get(uri, headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -31,8 +32,9 @@ class MartiangleController extends GetxController {
     });
     print(response.statusCode);
     var jsonz = json.decode(response.body);
-    balance = jsonz['balance'];
-    startController = TextEditingController(text: balance.toString());
+    balance = double.parse(jsonz['Balance']) * 1 / 100;
+    balance1 = double.parse(jsonz['Balance']);
+    startController = TextEditingController(text: balance.toStringAsFixed(8));
     load.value = false;
   }
 

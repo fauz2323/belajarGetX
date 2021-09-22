@@ -1,16 +1,21 @@
 class Betting {
   Betting({
-    required this.data,
+    required this.result,
     required this.ballance,
   });
 
-  Data data;
+  Result result;
   Ballance ballance;
 
   factory Betting.fromJson(Map<String, dynamic> json) => Betting(
-        data: Data.fromJson(json["data"]),
+        result: Result.fromJson(json["result"]),
         ballance: Ballance.fromJson(json["ballance"]),
       );
+
+  Map<String, dynamic> toJson() => {
+        "result": result.toJson(),
+        "ballance": ballance.toJson(),
+      };
 }
 
 class Ballance {
@@ -23,10 +28,14 @@ class Ballance {
   factory Ballance.fromJson(Map<String, dynamic> json) => Ballance(
         balance: json["Balance"],
       );
+
+  Map<String, dynamic> toJson() => {
+        "Balance": balance,
+      };
 }
 
-class Data {
-  Data({
+class Result {
+  Result({
     required this.message,
     required this.number,
     required this.payOut,
@@ -36,9 +45,15 @@ class Data {
   String number;
   double payOut;
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory Result.fromJson(Map<String, dynamic> json) => Result(
         message: json["message"],
         number: json["number"],
         payOut: json["payOut"].toDouble(),
       );
+
+  Map<String, dynamic> toJson() => {
+        "message": message,
+        "number": number,
+        "payOut": payOut,
+      };
 }

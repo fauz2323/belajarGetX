@@ -90,24 +90,30 @@ class Dalembert extends StatelessWidget {
                             95) {
                           Get.snackbar("Message", "Prbability to High");
                         } else {
-                          var target = dalembertController.balance +
+                          var prob = (int.parse(
+                                      dalembertController.probController.text) /
+                                  100 *
+                                  1000) -
+                              1;
+                          var target = dalembertController.balance1 +
                               ((int.parse(dalembertController
                                           .targetController.text) /
                                       100) *
-                                  dalembertController.balance);
-                          var loss = dalembertController.balance -
+                                  dalembertController.balance1);
+                          var loss = dalembertController.balance1 -
                               ((int.parse(dalembertController
                                           .targetController.text) /
                                       100) *
-                                  dalembertController.balance);
+                                  dalembertController.balance1);
 
                           Map argument = {
-                            'prob': dalembertController.probController.text,
+                            'prob': prob.toInt(),
                             'loss': loss,
                             'target': target,
                             'start': dalembertController.startController.text,
                           };
                           Get.to(() => DalembertProses(), arguments: argument);
+                          // print(argument);
                         }
                       },
                       child: Container(
