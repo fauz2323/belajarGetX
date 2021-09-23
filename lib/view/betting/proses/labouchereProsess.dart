@@ -13,9 +13,9 @@ class LabouchereProses extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Labouchere"),
-        centerTitle: true,
         elevation: 0,
+        centerTitle: true,
+        title: Text("Tittle"),
       ),
       body: Container(
         child: Column(
@@ -23,59 +23,98 @@ class LabouchereProses extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 color: Colors.blue,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(23),
-                ),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: 200,
-                    child: SfCartesianChart(
-                        enableSideBySideSeriesPlacement: false,
-                        primaryXAxis: CategoryAxis(),
-                        legend: Legend(isVisible: false),
-                        series: <ChartSeries>[
-                          LineSeries<Grafik, int>(
-                            dataSource: labouchereProsesController.graph,
-                            xValueMapper: (Grafik g, _) => g.x,
-                            yValueMapper: (Grafik g, _) => g.y,
-                          )
-                        ]),
-                  ),
+                      height: 200,
+                      child: Obx(
+                        () => SfCartesianChart(
+                            enableSideBySideSeriesPlacement: false,
+                            primaryXAxis: CategoryAxis(),
+                            legend: Legend(isVisible: false),
+                            series: <ChartSeries>[
+                              LineSeries<Grafik, int>(
+                                dataSource:
+                                    labouchereProsesController.graph.value,
+                                xValueMapper: (Grafik g, _) => g.x,
+                                yValueMapper: (Grafik g, _) => g.y,
+                              )
+                            ]),
+                      )),
                 ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 20, right: 20, top: 6, bottom: 6),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [Text("a"), Text("data")],
+              ),
+            ),
+            Expanded(
+              child: Container(
+                height: 100,
+                child: Obx(
+                  () => ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: labouchereProsesController.data.length,
+                    itemBuilder: (context, i) {
+                      return Text("${labouchereProsesController.data[i]} - ");
+                    },
+                  ),
+                ),
               ),
             ),
             Expanded(
               child: ListView(
+                shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 children: [
-                  DataTable(columns: [
-                    DataColumn(
-                      label: Text("Bet ID"),
-                    ),
-                    DataColumn(
-                      label: Text("Profit"),
-                    ),
-                  ], rows: [
-                    DataRow(
-                      cells: [
-                        DataCell(
-                          Text("asd"),
+                  Obx(
+                    () => DataTable(
+                      columns: [
+                        DataColumn(
+                          label: Text("Result"),
                         ),
-                        DataCell(
-                          Text("asdasd"),
+                        DataColumn(
+                          label: Text("Profit"),
                         ),
                       ],
+                      rows: labouchereProsesController.betting
+                          .map(
+                            (datarows) => DataRow(
+                              cells: [
+                                DataCell(
+                                  Text(
+                                    datarows.result.message,
+                                    style: TextStyle(color: datarows.warna),
+                                  ),
+                                ),
+                                DataCell(
+                                  Text(
+                                    datarows.result.payOut.toString(),
+                                    style: TextStyle(color: datarows.warna),
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                          .toList()
+                          .reversed
+                          .toList(),
                     ),
-                  ]),
+                  )
                 ],
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                labouchereProsesController.stop.value = false;
+              },
               child: Text("STOP"),
               style: ElevatedButton.styleFrom(minimumSize: Size(190, 40)),
             ),

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:profmoonv2/model/betting/betting.dart';
@@ -45,6 +46,7 @@ class DalembertProsesController extends GetxController {
         if (response2.statusCode == 200) {
           final jsonData = json.decode(response2.body);
           if (jsonData['result']['message'] == 'lose') {
+            jsonData['warna'] = Colors.red;
             print(jsonData['result']['message']);
             betting.add(Betting.fromJson(jsonData));
             balance1.value = double.parse(jsonData['ballance']['Balance']);
@@ -54,18 +56,32 @@ class DalembertProsesController extends GetxController {
             reset.value = reset.value + double.parse(Get.arguments['start']);
             stop = stop;
           } else {
-            print(jsonData['result']['message']);
+            if (reset.value != double.parse(Get.arguments['start'])) {
+              print(jsonData['result']['message']);
+              jsonData['warna'] = Colors.black;
 
-            balance1.value = double.parse(jsonData['ballance']['Balance']);
-            betting.add(Betting.fromJson(jsonData));
-            colorwin.value = false;
-            graphPosition.value++;
-            profit.value = profit.value + jsonData['result']['payOut'];
-            reset.value = reset.value - double.parse(Get.arguments['start']);
-            stop = stop;
+              balance1.value = double.parse(jsonData['ballance']['Balance']);
+              betting.add(Betting.fromJson(jsonData));
+              colorwin.value = false;
+              graphPosition.value++;
+              profit.value = profit.value + jsonData['result']['payOut'];
+              reset.value = reset.value - double.parse(Get.arguments['start']);
+              stop = stop;
+            } else {
+              print(jsonData['result']['message']);
+              jsonData['warna'] = Colors.black;
+
+              balance1.value = double.parse(jsonData['ballance']['Balance']);
+              betting.add(Betting.fromJson(jsonData));
+              colorwin.value = false;
+              graphPosition.value++;
+              profit.value = profit.value + jsonData['result']['payOut'];
+              reset.value = double.parse(Get.arguments['start']);
+              stop = stop;
+            }
           }
         }
-        print("object setelah betting");
+        print("object setelah betting ${reset.value}");
         graph.add(Grafik(graphPosition.value, profit.value));
       } while (balance1.value > Get.arguments['loss'] &&
           Get.arguments['target'] > balance1.value &&

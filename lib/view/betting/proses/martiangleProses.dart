@@ -75,10 +75,16 @@ class MartiangleProses extends StatelessWidget {
                             (datarows) => DataRow(
                               cells: [
                                 DataCell(
-                                  Text(datarows.result.message),
+                                  Text(
+                                    datarows.result.message,
+                                    style: TextStyle(color: datarows.warna),
+                                  ),
                                 ),
                                 DataCell(
-                                  Text(datarows.result.payOut.toString()),
+                                  Text(
+                                    datarows.result.payOut.toString(),
+                                    style: TextStyle(color: datarows.warna),
+                                  ),
                                 )
                               ],
                             ),

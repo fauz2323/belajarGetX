@@ -90,28 +90,44 @@ class HomeAppController extends GetxController {
       await storage.deleteAll();
       Get.off(Login());
     }
-
-    // time = Timer.periodic(Duration(seconds: 3), (timer) async {
-    //   print(11231);
-    //   // var uri2 = Uri.parse('https://paseo.live/paseo/CekSaldo');
-    //   // Map body = {
-    //   //   'walletAddress': tronAdress,
-    //   // };
-
-    //   // final response1 = await http.post(uri2, body: body);
-    //   // final dataJson = json.decode(response1.body);
-    //   // if (dataJson['data']['trxbalance'] != null ||
-    //   //     dataJson['data']['trxbalance'] != 0) {}
-    // });
   }
 
-  check() async {}
+  check() async {
+    print(11231);
+    var uri2 = Uri.parse('https://paseo.live/paseo/CekSaldo');
+    Map body = {
+      'walletAddress': tronAdress,
+    };
+
+    final response1 = await http.post(uri2, body: body);
+    final dataJson = json.decode(response1.body);
+    print(privatKey);
+    if (dataJson['data']['trxbalance'] != null) {
+      if (dataJson['data']['trxbalance'] > 999999) {
+        final amount = dataJson['data']['trxbalance'] / 1000000;
+        print(amount);
+        var uri = Uri.parse('https://profmoon.com/api/clearBalance');
+        Map bodyRes = {
+          'pay': '${amount - 0.3}',
+        };
+        final res = await http.post(uri, body: bodyRes, headers: {
+          'Authorization': 'Bearer $token',
+        });
+        if (res.statusCode == 200) {
+          var data = json.decode(res.body);
+          tronBalance.value = data['data'].toString();
+        }
+        print('aa ${res.statusCode}');
+      }
+    }
+  }
 
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
     init();
+    time = Timer.periodic(Duration(seconds: 20), (timer) => check());
   }
 
   @override
@@ -119,6 +135,6 @@ class HomeAppController extends GetxController {
     // TODO: implement onClose
     super.onClose();
     print("Close OBJJS");
-    // time.cancel();
+    time.cancel();
   }
 }

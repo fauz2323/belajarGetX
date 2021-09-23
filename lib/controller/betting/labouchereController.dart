@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 class LabouchereController extends GetxController {
   final storage = new FlutterSecureStorage();
   var keyToken;
+  var balance1;
   var balance;
   var load = true.obs;
   late TextEditingController startController;
@@ -31,7 +32,8 @@ class LabouchereController extends GetxController {
     print(response.statusCode);
     var jsonz = json.decode(response.body);
     balance = double.parse(jsonz['Balance']) * 1 / 100;
-    startController = TextEditingController(text: balance.toString());
+    balance1 = double.parse(jsonz['Balance']);
+    startController = TextEditingController(text: balance.toStringAsFixed(8));
     load.value = false;
   }
 

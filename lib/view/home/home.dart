@@ -65,7 +65,7 @@ class Home extends StatelessWidget {
                           child: BalanceHome(
                             title: "TRON",
                             image: 'asset/image/tron.png',
-                            balance: homeAppController.tronBalance,
+                            balance: homeAppController.tronBalance.value,
                           ),
                         ),
                         // InkWell(

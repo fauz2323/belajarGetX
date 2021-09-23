@@ -92,24 +92,30 @@ class Fibonacci extends StatelessWidget {
                             95) {
                           Get.snackbar("Message", "Prbability to High");
                         } else {
-                          var target = fibbonacciController.balance +
+                          var prob = (int.parse(fibbonacciController
+                                      .probController.text) /
+                                  100 *
+                                  1000) -
+                              1;
+                          var target = fibbonacciController.balance1 +
                               ((int.parse(fibbonacciController
                                           .targetController.text) /
                                       100) *
-                                  fibbonacciController.balance);
-                          var loss = fibbonacciController.balance -
+                                  fibbonacciController.balance1);
+                          var loss = fibbonacciController.balance1 -
                               ((int.parse(fibbonacciController
                                           .targetController.text) /
                                       100) *
-                                  fibbonacciController.balance);
+                                  fibbonacciController.balance1);
 
                           Map argument = {
-                            'prob': fibbonacciController.probController.text,
+                            'prob': prob.toInt(),
                             'loss': loss,
                             'target': target,
                             'start': fibbonacciController.startController.text,
                           };
                           Get.to(() => FibonacciProses(), arguments: argument);
+                          // print(argument);
                         }
                       },
                       child: Container(

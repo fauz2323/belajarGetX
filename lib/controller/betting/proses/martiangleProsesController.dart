@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'dart:async';
@@ -45,8 +46,11 @@ class MartiangleProsesCOntroller extends GetxController {
         });
         print(response2.statusCode);
         if (response2.statusCode == 200) {
+          print(response2.body);
           final jsonData = json.decode(response2.body);
           if (jsonData['result']['message'] == 'lose') {
+            jsonData['warna'] = Colors.red;
+
             print(jsonData['result']['message']);
             betting.add(Betting.fromJson(jsonData));
             balance1.value = double.parse(jsonData['ballance']['Balance']);
@@ -56,6 +60,7 @@ class MartiangleProsesCOntroller extends GetxController {
             reset.value = reset.value * 2;
             stop = stop;
           } else {
+            jsonData['warna'] = Colors.black;
             print(jsonData['result']['message']);
 
             balance1.value = double.parse(jsonData['ballance']['Balance']);

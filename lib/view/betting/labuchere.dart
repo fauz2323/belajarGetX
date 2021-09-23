@@ -91,24 +91,30 @@ class Labouchere extends StatelessWidget {
                             95) {
                           Get.snackbar("Message", "Prbability to High");
                         } else {
-                          var target = labouchereController.balance +
+                          var prob = (int.parse(labouchereController
+                                      .probController.text) /
+                                  100 *
+                                  1000) -
+                              1;
+                          var target = labouchereController.balance1 +
                               ((int.parse(labouchereController
                                           .targetController.text) /
                                       100) *
-                                  labouchereController.balance);
-                          var loss = labouchereController.balance -
+                                  labouchereController.balance1);
+                          var loss = labouchereController.balance1 -
                               ((int.parse(labouchereController
                                           .targetController.text) /
                                       100) *
-                                  labouchereController.balance);
+                                  labouchereController.balance1);
 
                           Map argument = {
-                            'prob': labouchereController.probController.text,
+                            'prob': prob.toInt(),
                             'loss': loss,
                             'target': target,
                             'start': labouchereController.startController.text,
                           };
                           Get.to(() => LabouchereProses(), arguments: argument);
+                          // print(argument);
                         }
                       },
                       child: Container(

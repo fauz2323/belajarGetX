@@ -1,15 +1,20 @@
+import 'package:flutter/cupertino.dart';
+
 class Betting {
   Betting({
     required this.result,
     required this.ballance,
+    required this.warna,
   });
 
   Result result;
   Ballance ballance;
+  Color warna;
 
   factory Betting.fromJson(Map<String, dynamic> json) => Betting(
         result: Result.fromJson(json["result"]),
         ballance: Ballance.fromJson(json["ballance"]),
+        warna: json['warna'],
       );
 
   Map<String, dynamic> toJson() => {

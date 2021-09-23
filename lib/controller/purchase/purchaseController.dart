@@ -90,19 +90,19 @@ class PurchaseController extends GetxController {
   proses(var code) async {
     var url = Uri.parse('https://profmoon.com/api/purchase');
 
-    final response = await http.get(
-      url,
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': 'Bearer $keyToken',
-      },
-    );
+    // final response = await http.get(
+    //   url,
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Accept': 'application/json',
+    //     'Authorization': 'Bearer $keyToken',
+    //   },
+    // );
 
-    if (response.statusCode == 200) {
-      Get.back();
-      Get.snackbar("message", "PAID SUCCESS");
-    }
+    // if (response.statusCode == 200) {
+    //   Get.back();
+    //   Get.snackbar("message", "PAID SUCCESS");
+    // }
   }
 
   @override

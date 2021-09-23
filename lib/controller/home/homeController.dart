@@ -55,6 +55,5 @@ class HomesController extends GetxController {
     // TODO: implement onClose
     super.onClose();
     print('closeObjg');
-    time.cancel();
   }
 }
