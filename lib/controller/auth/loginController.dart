@@ -54,6 +54,7 @@ class LoginController extends GetxController {
       load.value = false;
       Get.off(Homes());
     } else if (response.statusCode == 301) {
+      load.value = false;
       Get.off(VerifPage());
     } else if (response.statusCode == 401) {
       load.value = false;

@@ -93,13 +93,22 @@ class HomeAppController extends GetxController {
   }
 
   check() async {
+    final response2 = await http.get(
+      uri2,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+    print(response2.statusCode);
+    tronBalance.value = json.decode(response2.body)['Balance'];
     print(11231);
-    var uri2 = Uri.parse('https://paseo.live/paseo/CekSaldo');
     Map body = {
       'walletAddress': tronAdress,
     };
 
-    final response1 = await http.post(uri2, body: body);
+    final response1 = await http.post(uri3, body: body);
     final dataJson = json.decode(response1.body);
     print(privatKey);
     if (dataJson['data']['trxbalance'] != null) {

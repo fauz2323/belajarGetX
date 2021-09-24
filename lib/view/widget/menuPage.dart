@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:profmoonv2/view/betting/betting.dart';
+import 'package:profmoonv2/view/betting/manualBetting.dart';
 import 'package:profmoonv2/view/network/networkUser.dart';
 import 'package:profmoonv2/view/purchase/purchase.dart';
 import 'package:profmoonv2/view/reffRegis/reffRegis.dart';
@@ -59,7 +60,7 @@ class MenuPage extends StatelessWidget {
                   title: "withdraw",
                 ),
                 HomeMenu(
-                  title: "Wallet Address",
+                  title: "Deposit Address",
                   fun: () {
                     Get.to(() => WalletAddress(
                           name: "Wallet Adress",
@@ -89,6 +90,13 @@ class MenuPage extends StatelessWidget {
                         ));
                   },
                   title: "Register",
+                ),
+                HomeMenu(
+                  icon: Icons.ac_unit,
+                  fun: () {
+                    Get.to(() => manualBetting());
+                  },
+                  title: "Manual Multiply",
                 ),
                 HomeMenu(
                   icon: Icons.ac_unit,

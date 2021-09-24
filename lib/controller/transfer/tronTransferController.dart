@@ -9,8 +9,7 @@ import 'package:profmoonv2/model/auth/paseo.dart';
 import 'package:profmoonv2/view/notifScreen/success.dart';
 
 class TronsTransferController extends GetxController {
-  var uri = Uri.parse("https://paseo.live/paseo/SendTron");
-  var uri3 = Uri.parse("https://profmoon.com/api/pin");
+  var uri3 = Uri.parse("https://profmoon.com/api/wd");
   var uri2 = Uri.parse('https://profmoon.com/api/getBalance');
   final storage = new FlutterSecureStorage();
   TextEditingController pinController = TextEditingController();
@@ -53,15 +52,11 @@ class TronsTransferController extends GetxController {
 
   proses(var amount, String address, var pin) async {
     print("Masuk proses");
-    Map body = {
-      'senderAddress': adressTron,
-      'senderPrivateKey': privatKey,
-      'receiverAddress': address,
-      'amount': amount
-    };
 
     Map body2 = {
       'pin': pin,
+      'totalWd': amount,
+      'address': address,
     };
 
     final res = await http.post(uri3, body: body2, headers: {
@@ -69,19 +64,14 @@ class TronsTransferController extends GetxController {
     });
 
     if (res.statusCode == 200) {
-      final response = await http.post(uri, body: body);
-      final data = json.decode(response.body);
-      print("hasil");
-      print(data);
-      if (data['success'] != null) {
-        Get.off(Success());
-      } else {
-        load.value = false;
-        Get.snackbar("Message", "insufficient balance");
-      }
-    } else {
+      load.value = false;
+      Get.off(Success());
+    } else if (res.statusCode == 201) {
       load.value = false;
       Get.snackbar("Message", "Password Transaction Not Match");
+    } else if (res.statusCode == 222) {
+      load.value = false;
+      Get.snackbar("Message", "insufficient balance");
     }
   }
 

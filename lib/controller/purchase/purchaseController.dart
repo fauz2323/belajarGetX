@@ -88,7 +88,16 @@ class PurchaseController extends GetxController {
   }
 
   proses(var code) async {
+    keyToken = await storage.read(key: 'key');
     var url = Uri.parse('https://profmoon.com/api/purchase');
+
+    Map codes = {'code': code};
+
+    final response = await http.post(url,
+        headers: {
+          'Authorization': 'Bearer $keyToken',
+        },
+        body: codes);
 
     // final response = await http.get(
     //   url,

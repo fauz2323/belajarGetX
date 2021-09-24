@@ -12,7 +12,10 @@ class Login extends StatelessWidget {
       backgroundColor: Colors.blue,
       body: Obx(
         () => (loginController.load.value)
-            ? Center(child: CircularProgressIndicator())
+            ? Center(
+                child: CircularProgressIndicator(
+                color: Colors.white,
+              ))
             : Center(
                 child: SingleChildScrollView(
                   child: Container(

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:profmoonv2/controller/purchase/purchaseController.dart';
@@ -15,7 +16,7 @@ class Purchase extends StatelessWidget {
       backgroundColor: Colors.blue,
       appBar: AppBar(
         title: Text("Purchase Apps"),
-        // centerTitle: true,
+        centerTitle: true,
         elevation: 0,
       ),
       body: Center(
@@ -29,6 +30,10 @@ class Purchase extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Text(
+                "Insert Your Purchase Code",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(

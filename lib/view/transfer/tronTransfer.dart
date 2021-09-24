@@ -90,9 +90,6 @@ class TronTransfer extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: TextFormField(
-                                inputFormatters: <TextInputFormatter>[
-                                  FilteringTextInputFormatter.digitsOnly
-                                ],
                                 keyboardType: TextInputType.number,
                                 controller:
                                     tronTransferController.banyakController,
@@ -162,9 +159,11 @@ class TronTransfer extends StatelessWidget {
                                 child: TextButton(
                                   onPressed: () {
                                     // tronTransferController.load.value = true;
-                                    var angka = int.parse(tronTransferController
-                                        .banyakController.text);
+                                    var angka = double.parse(
+                                        tronTransferController
+                                            .banyakController.text);
                                     print("aaasss");
+
                                     tronTransferController.proses(
                                       angka.toString(),
                                       tronTransferController

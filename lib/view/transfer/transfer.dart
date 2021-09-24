@@ -15,7 +15,7 @@ class Transfer extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
         child: DefaultTabController(
-          length: 2,
+          length: 1,
           child: Scaffold(
             appBar: AppBar(
               elevation: 0,
@@ -24,18 +24,14 @@ class Transfer extends StatelessWidget {
                   Tab(
                     text: "TRON",
                   ),
-                  Tab(
-                    text: "PASEO",
-                  ),
                 ],
               ),
-              title: Text("TRANSFER"),
+              title: Text("withdraw"),
               centerTitle: true,
             ),
             body: TabBarView(
               children: [
                 TronTransfer(),
-                PaseoTransfer(),
               ],
             ),
           ),
