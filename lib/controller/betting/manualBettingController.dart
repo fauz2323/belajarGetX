@@ -53,5 +53,13 @@ class ManualBettingController extends GetxController {
     // TODO: implement onInit
     super.onInit();
     init();
+    probController.text = '49.99';
+  }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+    probController.dispose();
   }
 }

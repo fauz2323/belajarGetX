@@ -77,7 +77,7 @@ class MartiangleProsesCOntroller extends GetxController {
       } while (balance1.value > Get.arguments['loss'] &&
           Get.arguments['target'] > balance1.value &&
           stop.value);
-
+      stop.value = false;
       print("done");
     } else {
       load.value = false;

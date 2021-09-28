@@ -56,7 +56,7 @@ class DalembertProsesController extends GetxController {
             reset.value = reset.value + double.parse(Get.arguments['start']);
             stop = stop;
           } else {
-            if (reset.value != double.parse(Get.arguments['start'])) {
+            if (reset.value > double.parse(Get.arguments['start'])) {
               print(jsonData['result']['message']);
               jsonData['warna'] = Colors.black;
 
@@ -64,7 +64,8 @@ class DalembertProsesController extends GetxController {
               betting.add(Betting.fromJson(jsonData));
               colorwin.value = false;
               graphPosition.value++;
-              profit.value = profit.value + jsonData['result']['payOut'];
+              profit.value =
+                  profit.value + (jsonData['result']['payOut'] - reset.value);
               reset.value = reset.value - double.parse(Get.arguments['start']);
               stop = stop;
             } else {
@@ -75,7 +76,8 @@ class DalembertProsesController extends GetxController {
               betting.add(Betting.fromJson(jsonData));
               colorwin.value = false;
               graphPosition.value++;
-              profit.value = profit.value + jsonData['result']['payOut'];
+              profit.value =
+                  profit.value + (jsonData['result']['payOut'] - reset.value);
               reset.value = double.parse(Get.arguments['start']);
               stop = stop;
             }
@@ -86,7 +88,7 @@ class DalembertProsesController extends GetxController {
       } while (balance1.value > Get.arguments['loss'] &&
           Get.arguments['target'] > balance1.value &&
           stop.value);
-
+      stop.value = false;
       print("done");
     } else {
       load.value = false;

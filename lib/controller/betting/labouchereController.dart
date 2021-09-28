@@ -8,6 +8,7 @@ class LabouchereController extends GetxController {
   final storage = new FlutterSecureStorage();
   var keyToken;
   var balance1;
+  var slideValue = 49.9.obs, lossValue = 10.0.obs, targetValue = 10.0.obs;
   var balance;
   var load = true.obs;
   late TextEditingController startController;
@@ -33,7 +34,7 @@ class LabouchereController extends GetxController {
     var jsonz = json.decode(response.body);
     balance = double.parse(jsonz['Balance']) * 1 / 100;
     balance1 = double.parse(jsonz['Balance']);
-    startController = TextEditingController(text: balance.toStringAsFixed(8));
+    startController = TextEditingController(text: balance.toStringAsFixed(4));
     load.value = false;
   }
 

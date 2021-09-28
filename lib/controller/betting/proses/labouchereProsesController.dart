@@ -76,6 +76,7 @@ class LabouchereProsesController extends GetxController {
               profit.value = profit.value + reset.value;
               reset.value = double.parse(Get.arguments['start']);
             }
+            balance1.value = double.parse(jsonData['ballance']['Balance']);
           }
         }
         print("object setelah betting");

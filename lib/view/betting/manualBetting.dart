@@ -75,12 +75,8 @@ class manualBetting extends StatelessWidget {
                                         onPressed: () {
                                           var total = double.parse(
                                                   manualBettingController
-                                                      .startController.text) +
-                                              (double.parse(
-                                                      manualBettingController
-                                                          .startController
-                                                          .text) /
-                                                  2);
+                                                      .startController.text) /
+                                              2;
                                           manualBettingController
                                               .startController
                                               .text = total.toString();

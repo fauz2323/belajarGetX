@@ -8,18 +8,20 @@ class FibbonacciController extends GetxController {
   final storage = new FlutterSecureStorage();
   var keyToken;
   var balance1;
+  var slideValue = 49.9.obs, sliderTarget = 10.0.obs, sliderLose = 10.0.obs;
+
   var balance;
   var load = true.obs;
   late TextEditingController startController;
 
-  final TextEditingController probController =
-      TextEditingController(text: '50');
+  // final TextEditingController probController =
+  //     TextEditingController(text: '50');
 
-  final TextEditingController targetController =
-      TextEditingController(text: '10');
+  // final TextEditingController targetController =
+  //     TextEditingController(text: '10');
 
-  final TextEditingController lossController =
-      TextEditingController(text: '10');
+  // final TextEditingController lossController =
+  //     TextEditingController(text: '10');
 
   init() async {
     keyToken = await storage.read(key: 'key');

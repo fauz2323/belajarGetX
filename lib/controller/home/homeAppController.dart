@@ -45,52 +45,52 @@ class HomeAppController extends GetxController {
     );
     print("object");
     print(response.statusCode);
-    if (response.statusCode == 200) {
-      // // final response3 = await http.post(
-      // //   uri3,
-      // //   body: {
-      // //     'walletAddress': tronAdress,
-      // //   },
-      // // );
-      // // print("setelah ke await ke1");
-      // // print(json.decode(response3.body));
+    // if (response.statusCode == 200) {
+    // // final response3 = await http.post(
+    // //   uri3,
+    // //   body: {
+    // //     'walletAddress': tronAdress,
+    // //   },
+    // // );
+    // // print("setelah ke await ke1");
+    // // print(json.decode(response3.body));
 
-      // // var jsondataPaseo = json.decode(response3.body);
-      // // if (jsondataPaseo['data']['trxbalance'] == null) {
-      // //   tronBalance.value = "not active";
-      // //   paseoBalance.value = "not active";
-      // // } else {
-      // //   getBalance = Paseo.fromJson(jsondataPaseo);
-      // //   var balance = getBalance!.data!.trxbalance! / 1000000;
-      // //   tronBalance.value = balance.toString();
+    // // var jsondataPaseo = json.decode(response3.body);
+    // // if (jsondataPaseo['data']['trxbalance'] == null) {
+    // //   tronBalance.value = "not active";
+    // //   paseoBalance.value = "not active";
+    // // } else {
+    // //   getBalance = Paseo.fromJson(jsondataPaseo);
+    // //   var balance = getBalance!.data!.trxbalance! / 1000000;
+    // //   tronBalance.value = balance.toString();
 
-      // //   if (jsondataPaseo['data']['trc20Assets'].length != 0) {
-      // //     var balanceP = int.parse(getBalance!
-      // //             .data!.trc20Assets![0].tng5J6Ihg3EskS6PvtefXnbcCd2FZipPe6!) /
-      // //         100000000;
-      // //     paseoBalance.value = balanceP.toString();
-      // //   } else {
-      // //     paseoBalance.value = "Not Active";
-      // //   }
-      // // }
-      // // // data.add(json.decode(response.body));
-      data = Data.fromJson(json.decode(response.body));
-      // data.add(json.decode(response.body));
-      final response2 = await http.get(
-        uri2,
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': 'Bearer $token',
-        },
-      );
-      print(response2.statusCode);
-      tronBalance.value = json.decode(response2.body)['Balance'];
-      load.value = false;
-    } else {
-      await storage.deleteAll();
-      Get.off(Login());
-    }
+    // //   if (jsondataPaseo['data']['trc20Assets'].length != 0) {
+    // //     var balanceP = int.parse(getBalance!
+    // //             .data!.trc20Assets![0].tng5J6Ihg3EskS6PvtefXnbcCd2FZipPe6!) /
+    // //         100000000;
+    // //     paseoBalance.value = balanceP.toString();
+    // //   } else {
+    // //     paseoBalance.value = "Not Active";
+    // //   }
+    // // }
+    // // // data.add(json.decode(response.body));
+    data = Data.fromJson(json.decode(response.body));
+    // data.add(json.decode(response.body));
+    final response2 = await http.get(
+      uri2,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+    print(response2.statusCode);
+    tronBalance.value = json.decode(response2.body)['Balance'];
+    load.value = false;
+    // } else {
+    //   await storage.deleteAll();
+    //   Get.off(Login());
+    // }
   }
 
   check() async {
@@ -112,23 +112,28 @@ class HomeAppController extends GetxController {
     final response1 = await http.post(uri3, body: body);
     final dataJson = json.decode(response1.body);
     print(privatKey);
-    if (dataJson['data']['trxbalance'] != null) {
-      if (dataJson['data']['trxbalance'] > 999999) {
-        final amount = dataJson['data']['trxbalance'] / 1000000;
-        print(amount);
-        var uri = Uri.parse('https://profmoon.com/api/clearBalance');
-        Map bodyRes = {
-          'pay': '${amount - 0.3}',
-        };
-        final res = await http.post(uri, body: bodyRes, headers: {
-          'Authorization': 'Bearer $token',
-        });
-        if (res.statusCode == 200) {
-          var data = json.decode(res.body);
-          tronBalance.value = data['data'].toString();
+    if (response2.statusCode == 200) {
+      if (dataJson['data']['trxbalance'] != null) {
+        if (dataJson['data']['trxbalance'] > 999999) {
+          final amount = dataJson['data']['trxbalance'] / 1000000;
+          print(amount);
+          var uri = Uri.parse('https://profmoon.com/api/clearBalance');
+          Map bodyRes = {
+            'pay': '${amount - 0.3}',
+          };
+          final res = await http.post(uri, body: bodyRes, headers: {
+            'Authorization': 'Bearer $token',
+          });
+          if (res.statusCode == 200) {
+            var data = json.decode(res.body);
+            tronBalance.value = data['data'].toString();
+          }
+          print('aa ${res.statusCode}');
         }
-        print('aa ${res.statusCode}');
       }
+    } else {
+      storage.deleteAll();
+      Get.off(Login());
     }
   }
 

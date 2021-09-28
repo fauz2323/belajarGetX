@@ -21,6 +21,7 @@ class DalembertController extends GetxController {
   var balance;
   var load = true.obs;
   var balance1;
+  var sliderValue = 49.9.obs, targetValue = 10.0.obs, lossValue = 10.0.obs;
 
   init() async {
     keyToken = await storage.read(key: 'key');
@@ -35,7 +36,7 @@ class DalembertController extends GetxController {
     balance = double.parse(jsonz['Balance']) * 1 / 100;
     balance1 = double.parse(jsonz['Balance']);
 
-    startController = TextEditingController(text: balance.toStringAsFixed(8));
+    startController = TextEditingController(text: balance.toStringAsFixed(4));
     load.value = false;
   }
 

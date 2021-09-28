@@ -21,7 +21,7 @@ class Success extends StatelessWidget {
         backgroundColor: Colors.blue,
         body: Center(
           child: Container(
-            height: height * 80 / 100,
+            height: height * 60 / 100,
             width: width * 80 / 100,
             decoration: BoxDecoration(
                 color: Colors.white,
@@ -30,7 +30,14 @@ class Success extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.verified),
+                Text(
+                  'Success',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Icon(
+                  Icons.verified,
+                  size: 100,
+                ),
               ],
             ),
           ),

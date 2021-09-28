@@ -9,18 +9,19 @@ class MartiangleController extends GetxController {
   final storage = new FlutterSecureStorage();
   var keyToken;
   var balance;
+  var slideValue = 10.0.obs, sliderTarget = 10.0.obs, sliderLose = 10.0.obs;
   var balance1;
   var load = true.obs;
   late TextEditingController startController;
 
-  final TextEditingController probController =
-      TextEditingController(text: '50');
+  // final TextEditingController probController =
+  //     TextEditingController(text: '50');
 
-  final TextEditingController targetController =
-      TextEditingController(text: '10');
+  // final TextEditingController targetController =
+  //     TextEditingController(text: '10');
 
-  final TextEditingController lossController =
-      TextEditingController(text: '10');
+  // final TextEditingController lossController =
+  //     TextEditingController(text: '10');
 
   init() async {
     keyToken = await storage.read(key: 'key');
@@ -34,7 +35,7 @@ class MartiangleController extends GetxController {
     var jsonz = json.decode(response.body);
     balance = double.parse(jsonz['Balance']) * 1 / 100;
     balance1 = double.parse(jsonz['Balance']);
-    startController = TextEditingController(text: balance.toStringAsFixed(8));
+    startController = TextEditingController(text: balance.toStringAsFixed(2));
     load.value = false;
   }
 

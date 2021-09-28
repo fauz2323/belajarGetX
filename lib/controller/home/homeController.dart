@@ -18,6 +18,7 @@ class HomesController extends GetxController {
   late Timer time;
   var url = Uri.parse("https://profmoon.com/api/authtest");
   var status = ''.obs;
+  var name = ''.obs;
 
   init() async {
     tronAdress = await storage.read(key: 'tronAdress');
@@ -36,6 +37,11 @@ class HomesController extends GetxController {
     print(response.statusCode);
     if (response.statusCode == 200) {
       status.value = json.decode(response.body)['status'];
+      name.value = json.decode(response.body)['user']['name'];
+      load.value = false;
+      print(load);
+    } else {
+      Get.off(Login());
     }
     print(a);
     print(b);

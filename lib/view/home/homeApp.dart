@@ -11,82 +11,92 @@ class Homes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.blue,
-        appBar: AppBar(
-          actions: [
-            Container(
-              padding: EdgeInsets.only(right: 20),
-              child: IconButton(
-                icon: Icon(
-                  Icons.logout,
-                  size: 40,
+        child: Obx(
+      () => (homeController.load.value)
+          ? Container(
+              child: Center(
+                child: CircularProgressIndicator(
+                  color: Colors.white,
                 ),
-                onPressed: () {
-                  homeController.logout();
-                },
+              ),
+              color: Colors.blue,
+            )
+          : Scaffold(
+              backgroundColor: Colors.blue,
+              appBar: AppBar(
+                actions: [
+                  Container(
+                    padding: EdgeInsets.only(right: 20),
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.logout,
+                        size: 40,
+                      ),
+                      onPressed: () {
+                        homeController.logout();
+                      },
+                    ),
+                  ),
+                ],
+                title: Text(
+                  (homeController.status.value == '')
+                      ? "TRONMOON"
+                      : "TRONMOON (${homeController.status})",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                ),
+                elevation: 0,
+              ),
+              // body: PageView(
+              //   onPageChanged: (index) {
+              //     homeController.selectedNavbar.value = index;
+              //   },
+              //   children: [
+              //     Home(),
+              //     Information(),
+              //     Home(),
+              //     Information(),
+              //   ],
+              // ),
+              body: Obx(
+                () => IndexedStack(
+                  index: homeController.selectedNavbar.value,
+                  children: [
+                    Home(
+                      name: homeController.name.value,
+                    ),
+                    Information(),
+                    Setting(),
+                  ],
+                ),
+              ),
+              bottomNavigationBar: Obx(
+                () => BottomNavigationBar(
+                  items: <BottomNavigationBarItem>[
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.home),
+                      label: "Home",
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Image.asset(
+                        'asset/image/trons.png',
+                        height: 30,
+                        width: 30,
+                      ),
+                      label: "TRONSCAN",
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.settings),
+                      label: "Setting",
+                    ),
+                  ],
+                  currentIndex: homeController.selectedNavbar.value,
+                  selectedItemColor: Colors.blue,
+                  unselectedItemColor: Colors.black,
+                  showSelectedLabels: true,
+                  onTap: homeController.changeSelectedNumber,
+                ),
               ),
             ),
-          ],
-          title: Obx(
-            () => Text(
-              (homeController.status.value == '')
-                  ? "TRONMOON"
-                  : "TRONMOON (${homeController.status})",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-            ),
-          ),
-          elevation: 0,
-        ),
-        // body: PageView(
-        //   onPageChanged: (index) {
-        //     homeController.selectedNavbar.value = index;
-        //   },
-        //   children: [
-        //     Home(),
-        //     Information(),
-        //     Home(),
-        //     Information(),
-        //   ],
-        // ),
-        body: Obx(
-          () => IndexedStack(
-            index: homeController.selectedNavbar.value,
-            children: [
-              Home(),
-              Information(),
-              Setting(),
-            ],
-          ),
-        ),
-        bottomNavigationBar: Obx(
-          () => BottomNavigationBar(
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: "Home",
-              ),
-              BottomNavigationBarItem(
-                icon: Image.asset(
-                  'asset/image/trons.png',
-                  height: 30,
-                  width: 30,
-                ),
-                label: "TRONSCAN",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                label: "Setting",
-              ),
-            ],
-            currentIndex: homeController.selectedNavbar.value,
-            selectedItemColor: Colors.blue,
-            unselectedItemColor: Colors.black,
-            showSelectedLabels: true,
-            onTap: homeController.changeSelectedNumber,
-          ),
-        ),
-      ),
-    );
+    ));
   }
 }

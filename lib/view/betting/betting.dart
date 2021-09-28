@@ -48,7 +48,7 @@ class Multiply extends StatelessWidget {
                                 multiplyController.status();
                               }
                             : () {
-                                Get.to(() => Martiangle());
+                                Get.off(() => Martiangle());
                               },
                       ),
                       BetMenu(
@@ -62,7 +62,7 @@ class Multiply extends StatelessWidget {
                                 multiplyController.status();
                               }
                             : () {
-                                Get.to(() => Dalembert());
+                                Get.off(() => Dalembert());
                               },
                       ),
                       BetMenu(
@@ -72,7 +72,7 @@ class Multiply extends StatelessWidget {
                                 multiplyController.status();
                               }
                             : () {
-                                Get.to(() => Fibonacci());
+                                Get.off(() => Fibonacci());
                               },
                         icon: FaIcon(
                           FontAwesomeIcons.sortNumericUp,
@@ -86,7 +86,7 @@ class Multiply extends StatelessWidget {
                                 multiplyController.status();
                               }
                             : () {
-                                Get.to(() => Labouchere());
+                                Get.off(() => Labouchere());
                               },
                         icon: Icon(
                           Icons.view_week,

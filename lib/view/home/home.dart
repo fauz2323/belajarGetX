@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:profmoonv2/controller/home/homeAppController.dart';
+import 'package:profmoonv2/view/notifScreen/success.dart';
 import 'package:profmoonv2/view/wallet/walletAdress.dart';
 import 'package:profmoonv2/view/widget/balanceHome.dart';
 import 'package:profmoonv2/view/widget/menuPage.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class Home extends StatelessWidget {
+  final name;
   final homeAppController = Get.put(HomeAppController());
+
+  Home({Key? key, this.name}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,9 +63,10 @@ class Home extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Get.to(() => WalletAddress(
-                                  name: 'PASEO',
-                                ));
+                            // Get.to(() => WalletAddress(
+                            //       name: 'PASEO',
+                            //     ));
+                            Get.to(Success());
                           },
                           child: BalanceHome(
                             title: "TRON",
