@@ -32,6 +32,7 @@ class ChangePassController extends GetxController {
     final data = json.decode(response.body);
     if (data['status'] == 1) {
       Get.back();
+      Get.snackbar("Message", "Success");
     } else if (data['status'] == 2) {
       Get.snackbar("Message", "${data['message']}");
     } else if (data['status'] == 3) {
@@ -39,5 +40,16 @@ class ChangePassController extends GetxController {
     }
 
     load.value = false;
+  }
+
+  @override
+  void onClose() {
+    print("close");
+    // TODO: implement onClose
+    super.onClose();
+    pinController.clear();
+    passwordNewController.clear();
+    passwordNewController2.clear();
+    passwordOldController.clear();
   }
 }

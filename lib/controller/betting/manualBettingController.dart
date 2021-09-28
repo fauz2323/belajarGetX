@@ -9,11 +9,14 @@ import 'package:profmoonv2/model/betting/betting.dart';
 
 class ManualBettingController extends GetxController {
   var betting = <Betting>[].obs;
+  var sliderValue = 49.99.obs;
+  var firstBet = 0.0.obs;
   TextEditingController startController = TextEditingController();
   TextEditingController probController = TextEditingController();
   final storage = new FlutterSecureStorage();
   var token;
   var loading = false.obs;
+  var balance = ''.obs;
 
   init() async {
     token = await storage.read(key: 'key');
@@ -23,7 +26,7 @@ class ManualBettingController extends GetxController {
     var uri = Uri.parse("https://profmoon.com/api/dice");
     Map body2 = {
       'pay': start,
-      'high': high,
+      'high': '$high',
       'low': '0',
     };
     final response2 = await http.post(uri, body: body2, headers: {
@@ -36,7 +39,7 @@ class ManualBettingController extends GetxController {
         Get.snackbar("Error", 'incuifment ballance');
       } else {
         dataJson['warna'] = Colors.black;
-
+        balance.value = dataJson['ballance']['Balance'];
         betting.add(Betting.fromJson(dataJson));
       }
     } else {

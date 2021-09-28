@@ -28,9 +28,13 @@ class Homes extends StatelessWidget {
               ),
             ),
           ],
-          title: Text(
-            "DOGEMOON",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+          title: Obx(
+            () => Text(
+              (homeController.status.value == '')
+                  ? "TRONMOON"
+                  : "TRONMOON (${homeController.status})",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+            ),
           ),
           elevation: 0,
         ),

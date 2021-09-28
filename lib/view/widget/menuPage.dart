@@ -8,6 +8,7 @@ import 'package:profmoonv2/view/transfer/transfer.dart';
 import 'package:profmoonv2/view/wallet/walletAdress.dart';
 import 'package:profmoonv2/view/widget/homeMenu.dart';
 import 'package:get/get.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MenuPage extends StatelessWidget {
   final reff;
@@ -19,8 +20,9 @@ class MenuPage extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Container(
-      width: 300,
+      width: width * 80 / 100,
       padding: EdgeInsets.all(10),
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -53,7 +55,7 @@ class MenuPage extends StatelessWidget {
               scrollDirection: Axis.vertical,
               children: [
                 HomeMenu(
-                  icon: Icons.money_rounded,
+                  icon: FaIcon(FontAwesomeIcons.arrowCircleDown),
                   fun: () {
                     Get.off(Transfer());
                   },
@@ -66,24 +68,24 @@ class MenuPage extends StatelessWidget {
                           name: "Wallet Adress",
                         ));
                   },
-                  icon: Icons.qr_code_rounded,
+                  icon: FaIcon(FontAwesomeIcons.qrcode),
                 ),
                 HomeMenu(
-                  icon: Icons.ac_unit,
+                  icon: FaIcon(FontAwesomeIcons.gem),
                   fun: (status == 'paid')
                       ? () {
                           Get.snackbar("Message", 'You is paid user');
                         }
                       : () {
                           print(status);
-                          Get.to(() => Purchase(
+                          Get.off(() => Purchase(
                                 status: status,
                               ));
                         },
                   title: "Purchase",
                 ),
                 HomeMenu(
-                  icon: Icons.ac_unit,
+                  icon: FaIcon(FontAwesomeIcons.userPlus),
                   fun: () {
                     Get.to(() => ReffRegis(
                           reff: reff,
@@ -92,21 +94,21 @@ class MenuPage extends StatelessWidget {
                   title: "Register",
                 ),
                 HomeMenu(
-                  icon: Icons.ac_unit,
+                  icon: FaIcon(FontAwesomeIcons.clone),
                   fun: () {
-                    Get.to(() => manualBetting());
+                    Get.off(() => manualBetting());
                   },
                   title: "Manual Multiply",
                 ),
                 HomeMenu(
-                  icon: Icons.ac_unit,
+                  icon: FaIcon(FontAwesomeIcons.robot),
                   fun: () {
-                    Get.to(() => Multiply());
+                    Get.off(() => Multiply());
                   },
                   title: "Multiply BOT",
                 ),
                 HomeMenu(
-                  icon: Icons.ac_unit,
+                  icon: FaIcon(FontAwesomeIcons.networkWired),
                   fun: () {
                     Get.to(NetWorkUser());
                   },

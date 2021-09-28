@@ -4,6 +4,7 @@ import 'package:profmoonv2/controller/home/homeAppController.dart';
 import 'package:profmoonv2/view/wallet/walletAdress.dart';
 import 'package:profmoonv2/view/widget/balanceHome.dart';
 import 'package:profmoonv2/view/widget/menuPage.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class Home extends StatelessWidget {
   final homeAppController = Get.put(HomeAppController());
@@ -39,14 +40,14 @@ class Home extends StatelessWidget {
                               fontSize: 18,
                             ),
                           ),
-                          Text(
-                            "( ${homeAppController.data!.status} )",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w200,
-                              fontSize: 18,
-                            ),
-                          ),
+                          // Text(
+                          //   "( ${homeAppController.data!.status} )",
+                          //   style: TextStyle(
+                          //     color: Colors.white,
+                          //     fontWeight: FontWeight.w200,
+                          //     fontSize: 18,
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),
@@ -66,8 +67,14 @@ class Home extends StatelessWidget {
                             title: "TRON",
                             image: 'asset/image/tron.png',
                             balance: homeAppController.tronBalance.value,
+                            widget: QrImage(
+                              data: homeAppController.tronAdress,
+                              size: 95,
+                              backgroundColor: Colors.white,
+                            ),
                           ),
                         ),
+
                         // InkWell(
                         //   onTap: () {
                         //     Get.to(() => WalletAddress(
@@ -93,7 +100,7 @@ class Home extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 10,
                   ),
                 ],
               ),

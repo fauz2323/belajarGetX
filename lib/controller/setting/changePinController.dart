@@ -53,4 +53,14 @@ class ChangePinController extends GetxController {
       Get.snackbar("Message", "${data['message']}");
     }
   }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+    oldPinController.clear();
+    newPinController.clear();
+    newPinController2.clear();
+    otpController.clear();
+  }
 }

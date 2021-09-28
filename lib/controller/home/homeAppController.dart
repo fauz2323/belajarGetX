@@ -10,6 +10,7 @@ import 'package:profmoonv2/view/auth/login.dart';
 
 class HomeAppController extends GetxController {
   var tronBalance = ''.obs;
+  var address;
   var token;
   var tronAdress;
   var privatKey;
@@ -103,7 +104,7 @@ class HomeAppController extends GetxController {
     );
     print(response2.statusCode);
     tronBalance.value = json.decode(response2.body)['Balance'];
-    print(11231);
+    print(json.decode(response2.body)['Balance']);
     Map body = {
       'walletAddress': tronAdress,
     };

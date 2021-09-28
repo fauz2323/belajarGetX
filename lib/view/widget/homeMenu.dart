@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class HomeMenu extends StatelessWidget {
   final VoidCallback fun;
-  final IconData icon;
   final title;
+  final Widget icon;
 
   const HomeMenu({Key? key, required this.fun, required this.icon, this.title})
       : super(key: key);
@@ -21,12 +21,13 @@ class HomeMenu extends StatelessWidget {
           child: Row(
             children: [
               Container(
+                padding: EdgeInsets.all(6),
                 decoration: BoxDecoration(
                     border: Border.all(
                   width: 1,
                   color: Colors.amberAccent,
                 )),
-                child: Icon(icon, size: 40),
+                child: icon,
               ),
               SizedBox(
                 width: 10,

@@ -6,13 +6,14 @@ import 'package:profmoonv2/model/auth/paseo.dart';
 import 'dart:convert';
 
 import 'package:profmoonv2/model/purchase/purchase.dart';
+import 'package:profmoonv2/view/home/homeApp.dart';
 
 class PurchaseController extends GetxController {
   final storage = new FlutterSecureStorage();
   TextEditingController codeController = TextEditingController();
   var keyToken, tronAdress, privatKey;
   late Purchasecost purchase;
-  var load = true.obs;
+  var load = false.obs;
   var uri2 = Uri.parse("https://paseo.live/paseo/SendToken");
   var uri = Uri.parse("https://profmoon.com/api/cost");
   Paseo? getBalance;
@@ -98,6 +99,14 @@ class PurchaseController extends GetxController {
           'Authorization': 'Bearer $keyToken',
         },
         body: codes);
+
+    if (response.statusCode == 200) {
+      Get.off(Homes());
+      Get.snackbar("Message", "Purchase Success");
+    } else if (response.statusCode == 222) {
+      Get.snackbar("Error", "Code Reedem Not Found");
+    }
+    load.value = false;
 
     // final response = await http.get(
     //   url,

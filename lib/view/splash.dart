@@ -23,7 +23,7 @@ class Splash extends StatelessWidget {
               height: 4,
             ),
             Text(
-              "DogeMoon",
+              "TronMoon",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

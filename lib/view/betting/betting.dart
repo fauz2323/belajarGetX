@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:profmoonv2/controller/betting/multiplyController.dart';
 import 'package:profmoonv2/view/betting/dalembert.dart';
@@ -38,7 +39,10 @@ class Multiply extends StatelessWidget {
                     children: <Widget>[
                       BetMenu(
                         text: "MARTINGALE",
-                        icon: Icons.ac_unit,
+                        icon: FaIcon(
+                          FontAwesomeIcons.angleDoubleUp,
+                          size: 60,
+                        ),
                         click: (multiplyController.gameStatus.value)
                             ? () {
                                 multiplyController.status();
@@ -49,7 +53,10 @@ class Multiply extends StatelessWidget {
                       ),
                       BetMenu(
                         text: "D'ALEMBERT",
-                        icon: Icons.data_usage,
+                        icon: Icon(
+                          Icons.data_usage,
+                          size: 60,
+                        ),
                         click: (multiplyController.gameStatus.value)
                             ? () {
                                 multiplyController.status();
@@ -67,7 +74,10 @@ class Multiply extends StatelessWidget {
                             : () {
                                 Get.to(() => Fibonacci());
                               },
-                        icon: Icons.update,
+                        icon: FaIcon(
+                          FontAwesomeIcons.sortNumericUp,
+                          size: 60,
+                        ),
                       ),
                       BetMenu(
                         text: "LABOUCHERE",
@@ -78,7 +88,10 @@ class Multiply extends StatelessWidget {
                             : () {
                                 Get.to(() => Labouchere());
                               },
-                        icon: Icons.access_alarm,
+                        icon: Icon(
+                          Icons.view_week,
+                          size: 60,
+                        ),
                       ),
                     ],
                   )),

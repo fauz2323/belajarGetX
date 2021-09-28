@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:get_storage/get_storage.dart';
+import 'package:profmoonv2/model/auth/user.dart';
 import 'package:profmoonv2/view/auth/login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -16,17 +16,29 @@ class HomesController extends GetxController {
   var tronAdress;
   var privatKey;
   late Timer time;
+  var url = Uri.parse("https://profmoon.com/api/authtest");
+  var status = ''.obs;
 
   init() async {
-    final box = GetStorage();
     tronAdress = await storage.read(key: 'tronAdress');
     privatKey = await storage.read(key: 'privatkey');
-    var c = box.read('key');
     var a = await storage.read(key: 'key');
     var b = await storage.read(key: 'tronAdress');
+
+    final response = await http.get(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $a',
+      },
+    );
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      status.value = json.decode(response.body)['status'];
+    }
     print(a);
     print(b);
-    print("print : ${c}");
   }
 
   logout() async {
@@ -48,6 +60,7 @@ class HomesController extends GetxController {
     // TODO: implement onInit
     super.onInit();
     init();
+    print("2231123123123");
   }
 
   @override

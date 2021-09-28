@@ -4,13 +4,16 @@ class BalanceHome extends StatelessWidget {
   final balance;
   final title;
   final image;
+  final Widget widget;
 
-  BalanceHome({Key? key, this.balance, this.title, this.image})
+  BalanceHome(
+      {Key? key, this.balance, this.title, this.image, required this.widget})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Container(
-      width: 150,
+      width: width * 65 / 100,
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -26,15 +29,24 @@ class BalanceHome extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Image.asset(
-            image,
-            width: 40,
-            height: 40,
+          Column(
+            children: [
+              Image.asset(
+                image,
+                width: 40,
+                height: 40,
+              ),
+              Text(title),
+              Text(balance.toString()),
+            ],
           ),
-          Text(title),
-          Text(balance.toString()),
+          Container(
+            child: widget,
+            decoration: BoxDecoration(border: Border.all(color: Colors.blue)),
+          ),
         ],
       ),
     );

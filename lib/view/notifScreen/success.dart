@@ -29,7 +29,9 @@ class Success extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [],
+              children: [
+                Icon(Icons.verified),
+              ],
             ),
           ),
         ),

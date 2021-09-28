@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class BetMenu extends StatelessWidget {
   final String text;
   final VoidCallback click;
-  final IconData icon;
+  final Widget icon;
 
   const BetMenu(
       {Key? key, required this.text, required this.click, required this.icon})
@@ -17,10 +17,7 @@ class BetMenu extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Icon(
-              icon,
-              size: 45,
-            ),
+            icon,
             SizedBox(
               height: 5,
             ),

@@ -26,7 +26,7 @@ class Setting extends StatelessWidget {
                 child: Container(
                   margin: EdgeInsets.only(top: 10, bottom: 10),
                   width: width * 9 / 10,
-                  height: height * 8 / 10,
+                  height: height * 7 / 10,
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(9))),
@@ -34,22 +34,25 @@ class Setting extends StatelessWidget {
                       EdgeInsets.only(top: 5, right: 16, left: 16, bottom: 10),
                   child: Stack(
                     children: [
-                      Align(
-                          alignment: Alignment.topRight,
-                          child: Material(
-                            color: Colors.transparent,
-                            child: IconButton(
-                                icon: Icon(
-                                  Icons.edit,
-                                  color: Colors.blue,
-                                ),
-                                color: Colors.black,
-                                onPressed: () {}),
-                          )),
+                      // Align(
+                      //     alignment: Alignment.topRight,
+                      //     child: Material(
+                      //       color: Colors.transparent,
+                      //       child: IconButton(
+                      //           icon: Icon(
+                      //             Icons.edit,
+                      //             color: Colors.blue,
+                      //           ),
+                      //           color: Colors.black,
+                      //           onPressed: () {}),
+                      //     )),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          SizedBox(
+                            height: height * 5 / 100,
+                          ),
                           Align(
                             alignment: Alignment.center,
                             child: Text(
@@ -62,7 +65,7 @@ class Setting extends StatelessWidget {
                           ),
                           Center(
                             child: Text(
-                              "Paid Users",
+                              '${settingController.data.status} User',
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 14,
@@ -70,7 +73,7 @@ class Setting extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            height: 30,
+                            height: height * 5 / 100,
                           ),
                           Align(
                             alignment: Alignment.topLeft,
@@ -85,7 +88,6 @@ class Setting extends StatelessWidget {
                           Text("${settingController.data.user!.email}",
                               style: TextStyle(
                                 color: Colors.blue,
-                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               )),
                           Divider(
@@ -105,7 +107,6 @@ class Setting extends StatelessWidget {
                           Text("${settingController.data.user!.joinDate}",
                               style: TextStyle(
                                 color: Colors.blue,
-                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               )),
                           Divider(
@@ -113,73 +114,38 @@ class Setting extends StatelessWidget {
                             height: 1,
                           ),
                           SizedBox(
-                            height: 30,
+                            height: height * 10 / 100,
                           ),
-                          Expanded(
-                            child: GridView.count(
-                              crossAxisCount: 2,
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                    color: Colors.blue,
-                                  )),
-                                  child: Material(
-                                    color: Colors.transparent,
-                                    child: InkWell(
-                                      onTap: () {
-                                        Get.to(ChangePassword());
-                                      },
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Icon(Icons.lock),
-                                          SizedBox(
-                                            height: 8,
-                                          ),
-                                          Text("Change Password")
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                    color: Colors.blue,
-                                  )),
-                                  child: Material(
-                                    color: Colors.transparent,
-                                    child: InkWell(
-                                      onTap: () {
-                                        Get.to(ChangePin());
-                                      },
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Icon(Icons.vpn_key),
-                                          SizedBox(
-                                            height: 8,
-                                          ),
-                                          Text(
-                                            "Change Transaction Password",
-                                            textAlign: TextAlign.center,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
+                          TextButton(
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              width: width * 70 / 100,
+                              child: Center(child: Text("Change Password")),
+                              decoration: BoxDecoration(
+                                  border:
+                                      Border.all(width: 1, color: Colors.blue),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
                             ),
+                            onPressed: () {
+                              Get.to(() => ChangePassword());
+                            },
+                          ),
+                          TextButton(
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              width: width * 70 / 100,
+                              child: Center(
+                                  child: Text("Change Transaction Password")),
+                              decoration: BoxDecoration(
+                                  border:
+                                      Border.all(width: 1, color: Colors.blue),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                            ),
+                            onPressed: () {
+                              Get.to(() => ChangePin());
+                            },
                           ),
                         ],
                       ),
