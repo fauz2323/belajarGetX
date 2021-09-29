@@ -9,7 +9,7 @@ class LabouchereProses extends StatelessWidget {
   final LabouchereProsesController labouchereProsesController =
       Get.put(LabouchereProsesController());
   back() {
-    Get.off(Multiply());
+    Get.off(() => Multiply());
   }
 
   LabouchereProses({Key? key}) : super(key: key);

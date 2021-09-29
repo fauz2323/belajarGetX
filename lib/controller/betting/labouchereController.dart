@@ -8,7 +8,7 @@ class LabouchereController extends GetxController {
   final storage = new FlutterSecureStorage();
   var keyToken;
   var balance1;
-  var slideValue = 49.9.obs, lossValue = 10.0.obs, targetValue = 10.0.obs;
+  var slideValue = 49.9.obs, lossValue = 20.0.obs, targetValue = 1.0.obs;
   var balance;
   var load = true.obs;
   late TextEditingController startController;

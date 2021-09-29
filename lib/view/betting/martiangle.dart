@@ -10,7 +10,7 @@ import 'package:profmoonv2/view/betting/widgetBetting/sliderWidgetBetting.dart';
 class Martiangle extends StatelessWidget {
   final martiangleController = Get.put(MartiangleController());
   back() {
-    Get.off(Multiply());
+    Get.off(() => Multiply());
   }
 
   Martiangle({Key? key}) : super(key: key);
@@ -71,6 +71,27 @@ class Martiangle extends StatelessWidget {
                           max: 90,
                           value: martiangleController.slideValue.value,
                         ),
+                        Text("If Win"),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Checkbox(
+                              value: martiangleController.checkbox.value,
+                              onChanged: (bool? val) {
+                                martiangleController.checkbox.value = val!;
+                                print(martiangleController.checkbox.value);
+                              },
+                            ),
+                            Text('Back To Start')
+                          ],
+                        ),
+                        FormBetting(
+                          controller: martiangleController.ifloseController,
+                          status: true,
+                          name: 'If Lose',
+                        ),
+
                         Obx(
                           () => Text(
                               "Target = ${martiangleController.sliderTarget.value}%"),
@@ -79,7 +100,7 @@ class Martiangle extends StatelessWidget {
                           data: (val) {
                             martiangleController.sliderTarget.value = val;
                           },
-                          min: 10,
+                          min: 1,
                           max: 90,
                           value: martiangleController.sliderTarget.value,
                         ),
@@ -91,7 +112,7 @@ class Martiangle extends StatelessWidget {
                           data: (val) {
                             martiangleController.sliderLose.value = val;
                           },
-                          min: 10,
+                          min: 1,
                           max: 90,
                           value: martiangleController.sliderLose.value,
                         ),
@@ -128,6 +149,9 @@ class Martiangle extends StatelessWidget {
                                 'target': target,
                                 'start':
                                     martiangleController.startController.text,
+                                'ifloss':
+                                    martiangleController.ifloseController.text,
+                                'ifwin': martiangleController.checkbox.value,
                               };
                               Get.off(() => MartiangleProses(),
                                   arguments: argument);
@@ -142,7 +166,7 @@ class Martiangle extends StatelessWidget {
                             ),
                             padding: EdgeInsets.all(10),
                             child: Text(
-                              "SUBMIT",
+                              "START ROLL",
                               style: TextStyle(color: Colors.white),
                             ),
                           ),

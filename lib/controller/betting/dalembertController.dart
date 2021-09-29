@@ -21,7 +21,7 @@ class DalembertController extends GetxController {
   var balance;
   var load = true.obs;
   var balance1;
-  var sliderValue = 49.9.obs, targetValue = 10.0.obs, lossValue = 10.0.obs;
+  var sliderValue = 49.9.obs, targetValue = 1.0.obs, lossValue = 20.0.obs;
 
   init() async {
     keyToken = await storage.read(key: 'key');

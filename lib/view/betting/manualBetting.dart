@@ -10,7 +10,7 @@ class manualBetting extends StatelessWidget {
       Get.put(ManualBettingController());
 
   back() {
-    Get.off(Homes());
+    Get.off(() => Homes());
   }
 
   manualBetting({Key? key}) : super(key: key);

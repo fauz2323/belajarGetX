@@ -4,6 +4,7 @@ import 'package:profmoonv2/view/betting/manualBetting.dart';
 import 'package:profmoonv2/view/network/networkUser.dart';
 import 'package:profmoonv2/view/purchase/purchase.dart';
 import 'package:profmoonv2/view/reffRegis/reffRegis.dart';
+import 'package:profmoonv2/view/transfer/historyWd.dart';
 import 'package:profmoonv2/view/transfer/transfer.dart';
 import 'package:profmoonv2/view/wallet/walletAdress.dart';
 import 'package:profmoonv2/view/widget/homeMenu.dart';
@@ -57,19 +58,26 @@ class MenuPage extends StatelessWidget {
                 HomeMenu(
                   icon: FaIcon(FontAwesomeIcons.arrowCircleDown),
                   fun: () {
-                    Get.off(Transfer());
+                    Get.off(() => Transfer());
                   },
-                  title: "withdraw",
+                  title: "Withdraw",
                 ),
                 HomeMenu(
-                  title: "Deposit Address",
                   fun: () {
-                    Get.to(() => WalletAddress(
-                          name: "Wallet Adress",
-                        ));
+                    Get.to(() => HistoryWd());
                   },
-                  icon: FaIcon(FontAwesomeIcons.qrcode),
+                  icon: FaIcon(FontAwesomeIcons.fileSignature),
+                  title: 'Withdraw History',
                 ),
+                // HomeMenu(
+                //   title: "Deposit Address",
+                //   fun: () {
+                //     Get.to(() => WalletAddress(
+                //           name: "Wallet Adress",
+                //         ));
+                //   },
+                //   icon: FaIcon(FontAwesomeIcons.qrcode),
+                // ),
                 HomeMenu(
                   icon: FaIcon(FontAwesomeIcons.gem),
                   fun: (status == 'paid')
@@ -110,7 +118,7 @@ class MenuPage extends StatelessWidget {
                 HomeMenu(
                   icon: FaIcon(FontAwesomeIcons.networkWired),
                   fun: () {
-                    Get.to(NetWorkUser());
+                    Get.to(() => NetWorkUser());
                   },
                   title: "Network",
                 ),

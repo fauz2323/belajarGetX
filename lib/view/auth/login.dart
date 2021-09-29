@@ -4,7 +4,10 @@ import 'package:profmoonv2/controller/auth/loginController.dart';
 import 'package:profmoonv2/view/auth/ragister.dart';
 
 class Login extends StatelessWidget {
-  final loginController = Get.put(LoginController());
+  LoginController loginController = Get.put(LoginController());
+  final version;
+
+  Login({Key? key, this.version}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -158,9 +161,7 @@ class Login extends StatelessWidget {
                             child: Text("Forgot Password"),
                           ),
                         ),
-                        Obx(
-                          () => Text("version: ${loginController.version}"),
-                        )
+                        Text("version: $version"),
                       ],
                     ),
                   ),

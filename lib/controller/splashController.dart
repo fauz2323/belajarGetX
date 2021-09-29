@@ -7,7 +7,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:package_info/package_info.dart';
 import 'package:profmoonv2/view/auth/login.dart';
-import 'package:profmoonv2/view/home/home.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:profmoonv2/view/home/homeApp.dart';
 import 'package:profmoonv2/view/update/updateversion.dart';
@@ -35,14 +34,16 @@ class SplashController extends GetxController {
       if (version.toString() == data['version']) {
         if (a == '') {
           print("1");
-          Get.off(Login());
+          Get.off(() => Login(
+                version: version,
+              ));
         } else {
           print('2');
-          Get.off(Homes());
+          Get.off(() => Homes());
         }
       } else {
         print('3');
-        Get.off(UpdateVersion());
+        Get.off(() => UpdateVersion());
       }
       //
     });
@@ -53,5 +54,12 @@ class SplashController extends GetxController {
     // TODO: implement onInit
     super.onInit();
     init();
+  }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+    print('splashClose');
   }
 }

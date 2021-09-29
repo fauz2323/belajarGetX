@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:profmoonv2/view/home/homeApp.dart';
 
 class Success extends StatelessWidget {
-  const Success({Key? key}) : super(key: key);
+  final balanceSend;
+  final wallet;
+  String formatedDate = DateFormat('d/m/y').format(Get.arguments);
+  Success({Key? key, this.balanceSend, this.wallet}) : super(key: key);
 
   back() {
-    Get.off(Homes());
+    Get.off(() => Homes());
   }
 
   @override
@@ -27,17 +32,57 @@ class Success extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(8))),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Icon(
+                    Icons.verified,
+                    size: 100,
+                    color: Colors.blue,
+                  ),
+                ),
                 Text(
-                  'Success',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  "Tron Sent",
+                  style: TextStyle(color: Colors.blue, fontSize: 26),
                 ),
-                Icon(
-                  Icons.verified,
-                  size: 100,
+                SizedBox(
+                  height: 20,
                 ),
+                Text(
+                  "$balanceSend Tron",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
+                ),
+                Text(
+                  "to Wallet : ",
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                ),
+                Container(
+                  padding: EdgeInsets.all(7),
+                  decoration: BoxDecoration(border: Border.all(width: 0.2)),
+                  child: Text(
+                    '$wallet',
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
+                  ),
+                ),
+                Divider(),
+                Container(
+                  padding: EdgeInsets.only(left: 40, right: 40),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Date: "),
+                      Text("$formatedDate"),
+                    ],
+                  ),
+                ),
+                Divider(),
+                ElevatedButton(
+                    onPressed: () {
+                      Get.off(() => Homes());
+                    },
+                    child: Text("Home"))
               ],
             ),
           ),

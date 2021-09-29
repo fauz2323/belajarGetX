@@ -12,7 +12,7 @@ class Fibonacci extends StatelessWidget {
   final FibbonacciController fibbonacciController =
       Get.put(FibbonacciController());
   back() {
-    Get.off(Multiply());
+    Get.off(() => Multiply());
   }
 
   Fibonacci({Key? key}) : super(key: key);
@@ -70,6 +70,16 @@ class Fibonacci extends StatelessWidget {
                           max: 90,
                           value: fibbonacciController.slideValue.value,
                         ),
+                        FormBetting(
+                          controller: fibbonacciController.ifWinController,
+                          name: "If Win (Increase)",
+                          status: true,
+                        ),
+                        FormBetting(
+                          controller: fibbonacciController.ifLoseController,
+                          name: "If Lose (Decrease)",
+                          status: true,
+                        ),
                         Obx(
                           () => Text(
                               "Target = ${fibbonacciController.sliderTarget.value}%"),
@@ -78,7 +88,7 @@ class Fibonacci extends StatelessWidget {
                           data: (val) {
                             fibbonacciController.sliderTarget.value = val;
                           },
-                          min: 10,
+                          min: 1,
                           max: 90,
                           value: fibbonacciController.sliderTarget.value,
                         ),
@@ -90,7 +100,7 @@ class Fibonacci extends StatelessWidget {
                           data: (val) {
                             fibbonacciController.sliderLose.value = val;
                           },
-                          min: 10,
+                          min: 1,
                           max: 90,
                           value: fibbonacciController.sliderLose.value,
                         ),
@@ -116,6 +126,10 @@ class Fibonacci extends StatelessWidget {
                                 'target': target,
                                 'start':
                                     fibbonacciController.startController.text,
+                                'ifWin':
+                                    fibbonacciController.ifWinController.text,
+                                'iflose':
+                                    fibbonacciController.ifLoseController.text
                               };
                               Get.off(() => FibonacciProses(),
                                   arguments: argument);

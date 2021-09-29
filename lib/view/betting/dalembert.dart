@@ -11,7 +11,7 @@ class Dalembert extends StatelessWidget {
   final DalembertController dalembertController =
       Get.put(DalembertController());
   back() {
-    Get.off(Multiply());
+    Get.off(() => Multiply());
   }
 
   Dalembert({Key? key}) : super(key: key);
@@ -75,7 +75,7 @@ class Dalembert extends StatelessWidget {
                           data: (val) {
                             dalembertController.targetValue.value = val;
                           },
-                          min: 10,
+                          min: 1,
                           max: 90,
                           value: dalembertController.targetValue.value,
                         ),
@@ -87,7 +87,7 @@ class Dalembert extends StatelessWidget {
                           data: (val) {
                             dalembertController.lossValue.value = val;
                           },
-                          min: 10,
+                          min: 1,
                           max: 90,
                           value: dalembertController.lossValue.value,
                         ),

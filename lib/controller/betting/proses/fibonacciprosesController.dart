@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class FibbonacciProsesController extends GetxController {
-  List data = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377];
+  List data = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987];
   int number = 0;
   var menang;
   final storage = new FlutterSecureStorage();
@@ -59,7 +59,7 @@ class FibbonacciProsesController extends GetxController {
               //
               reset.value = double.parse(Get.arguments['start']) * data[number];
             } else {
-              number = number + 2;
+              number = number + int.parse(Get.arguments['iflose']);
               reset.value = double.parse(Get.arguments['start']) * data[number];
             }
           } else {
@@ -73,13 +73,17 @@ class FibbonacciProsesController extends GetxController {
               //reset = widget.start * data[number];
               reset.value = double.parse(Get.arguments['start']) * data[number];
             } else {
-              number = number - 1;
+              number = number - int.parse(Get.arguments['ifWin']);
               reset.value = double.parse(Get.arguments['start']) * data[number];
             }
           }
           betting.add(Betting.fromJson(jsonData));
 
           graphPosition.value++;
+        }
+        if (reset.value > balance1.value) {
+          stop.value = false;
+          Get.snackbar("Error", "insufficient balance");
         }
 
         print("object setelah betting ${reset.value}");

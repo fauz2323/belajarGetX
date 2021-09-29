@@ -38,7 +38,11 @@ class ManualBettingController extends GetxController {
       if (dataJson['result']['message'] == 'incuifment ballance') {
         Get.snackbar("Error", 'incuifment ballance');
       } else {
-        dataJson['warna'] = Colors.black;
+        if (dataJson['result']['message'] == 'lose') {
+          dataJson['warna'] = Colors.red;
+        } else {
+          dataJson['warna'] = Colors.black;
+        }
         balance.value = dataJson['ballance']['Balance'];
         betting.add(Betting.fromJson(dataJson));
       }

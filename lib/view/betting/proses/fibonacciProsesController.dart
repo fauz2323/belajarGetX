@@ -9,7 +9,7 @@ class FibonacciProses extends StatelessWidget {
   final FibbonacciProsesController fibbonacciProsesController =
       Get.put(FibbonacciProsesController());
   back() {
-    Get.off(Multiply());
+    Get.off(() => Multiply());
   }
 
   FibonacciProses({Key? key}) : super(key: key);

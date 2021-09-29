@@ -9,7 +9,7 @@ class DalembertProses extends StatelessWidget {
   final DalembertProsesController dalembertProsesController =
       Get.put(DalembertProsesController());
   back() {
-    Get.off(Multiply());
+    Get.off(() => Multiply());
   }
 
   DalembertProses({Key? key}) : super(key: key);

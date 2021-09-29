@@ -12,7 +12,7 @@ class Labouchere extends StatelessWidget {
       Get.put(LabouchereController());
   Labouchere({Key? key}) : super(key: key);
   back() {
-    Get.off(Multiply());
+    Get.off(() => Multiply());
   }
 
   @override
@@ -73,7 +73,7 @@ class Labouchere extends StatelessWidget {
                               "Target = ${labouchereController.targetValue.value}%"),
                         ),
                         SliderBetting(
-                            min: 10,
+                            min: 1,
                             max: 90,
                             value: labouchereController.targetValue.value,
                             data: (val) {
@@ -84,7 +84,7 @@ class Labouchere extends StatelessWidget {
                               "Cut Lose = ${labouchereController.lossValue.value}%"),
                         ),
                         SliderBetting(
-                            min: 10,
+                            min: 1,
                             max: 90,
                             value: labouchereController.lossValue.value,
                             data: (val) {

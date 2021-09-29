@@ -36,7 +36,7 @@ class MultiplyController extends GetxController {
   }
 
   back() {
-    Get.off(Homes());
+    Get.off(() => Homes());
   }
 
   @override

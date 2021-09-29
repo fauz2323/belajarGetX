@@ -9,10 +9,12 @@ class MartiangleController extends GetxController {
   final storage = new FlutterSecureStorage();
   var keyToken;
   var balance;
-  var slideValue = 10.0.obs, sliderTarget = 10.0.obs, sliderLose = 10.0.obs;
+  var slideValue = 49.9.obs, sliderTarget = 1.0.obs, sliderLose = 20.0.obs;
   var balance1;
   var load = true.obs;
+  var checkbox = true.obs;
   late TextEditingController startController;
+  late TextEditingController ifloseController;
 
   // final TextEditingController probController =
   //     TextEditingController(text: '50');
@@ -36,6 +38,7 @@ class MartiangleController extends GetxController {
     balance = double.parse(jsonz['Balance']) * 1 / 100;
     balance1 = double.parse(jsonz['Balance']);
     startController = TextEditingController(text: balance.toStringAsFixed(2));
+    ifloseController = TextEditingController(text: '2');
     load.value = false;
   }
 

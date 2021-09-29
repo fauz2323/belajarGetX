@@ -8,11 +8,13 @@ class FibbonacciController extends GetxController {
   final storage = new FlutterSecureStorage();
   var keyToken;
   var balance1;
-  var slideValue = 49.9.obs, sliderTarget = 10.0.obs, sliderLose = 10.0.obs;
+  var slideValue = 49.9.obs, sliderTarget = 1.0.obs, sliderLose = 20.0.obs;
 
   var balance;
   var load = true.obs;
   late TextEditingController startController;
+  late TextEditingController ifWinController;
+  late TextEditingController ifLoseController;
 
   // final TextEditingController probController =
   //     TextEditingController(text: '50');
@@ -36,6 +38,8 @@ class FibbonacciController extends GetxController {
     balance = double.parse(jsonz['Balance']) * 1 / 100;
     balance1 = double.parse(jsonz['Balance']);
     startController = TextEditingController(text: balance.toStringAsFixed(8));
+    ifLoseController = TextEditingController(text: '2');
+    ifWinController = TextEditingController(text: '1');
     load.value = false;
   }
 

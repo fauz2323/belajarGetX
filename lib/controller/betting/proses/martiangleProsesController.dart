@@ -57,7 +57,11 @@ class MartiangleProsesCOntroller extends GetxController {
             colorwin.value = true;
             graphPosition.value++;
             profit.value = profit.value - reset.value;
-            reset.value = reset.value * 2;
+            reset.value = reset.value * double.parse(Get.arguments['ifloss']);
+            if (reset.value > balance1.value) {
+              stop.value = false;
+              Get.snackbar("Error", "incuifment ballance");
+            }
             stop = stop;
           } else {
             jsonData['warna'] = Colors.black;
@@ -67,8 +71,12 @@ class MartiangleProsesCOntroller extends GetxController {
             betting.add(Betting.fromJson(jsonData));
             colorwin.value = false;
             graphPosition.value++;
-            profit.value = profit.value + jsonData['result']['payOut'];
-            reset.value = double.parse(Get.arguments['start']);
+            profit.value =
+                profit.value + (jsonData['result']['payOut'] - reset.value);
+            print(Get.arguments['ifwin']);
+            if (Get.arguments['ifwin'] == true) {
+              reset.value = double.parse(Get.arguments['start']);
+            }
             stop = stop;
           }
         }

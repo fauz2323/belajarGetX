@@ -10,7 +10,7 @@ class MartiangleProses extends StatelessWidget {
   final MartiangleProsesCOntroller martiangleProsesCOntroller =
       Get.put(MartiangleProsesCOntroller());
   back() {
-    Get.off(Multiply());
+    Get.off(() => Multiply());
   }
 
   MartiangleProses({

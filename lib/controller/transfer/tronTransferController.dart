@@ -52,7 +52,7 @@ class TronsTransferController extends GetxController {
 
   proses(var amount, String address, var pin) async {
     print("Masuk proses");
-
+    DateTime date = DateTime.now();
     Map body2 = {
       'pin': pin,
       'totalWd': amount,
@@ -65,7 +65,12 @@ class TronsTransferController extends GetxController {
 
     if (res.statusCode == 200) {
       load.value = false;
-      Get.off(Success());
+      Get.off(
+          () => Success(
+                balanceSend: amount,
+                wallet: address,
+              ),
+          arguments: date);
     } else if (res.statusCode == 201) {
       load.value = false;
       Get.snackbar("Message", "Password Transaction Not Match");

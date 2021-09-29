@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 import 'package:profmoonv2/controller/transfer/tronTransferController.dart';
 
 class TronTransfer extends StatelessWidget {
-  final tronTransferController = Get.put(TronsTransferController());
+  TronsTransferController tronTransferController =
+      Get.put(TronsTransferController());
 
   TronTransfer({Key? key}) : super(key: key);
   @override

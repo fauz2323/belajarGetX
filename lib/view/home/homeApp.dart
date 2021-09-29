@@ -6,7 +6,7 @@ import 'package:profmoonv2/view/home/information.dart';
 import 'package:profmoonv2/view/setting/setting.dart';
 
 class Homes extends StatelessWidget {
-  final homeController = Get.put(HomesController());
+  HomesController homeController = Get.put(HomesController());
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +39,10 @@ class Homes extends StatelessWidget {
                   ),
                 ],
                 title: Text(
-                  (homeController.status.value == '')
+                  (homeController.users!.status == 'paid')
                       ? "TRONMOON"
-                      : "TRONMOON (${homeController.status})",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                      : "TRONMOON (trial)",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
                 elevation: 0,
               ),
@@ -62,7 +62,10 @@ class Homes extends StatelessWidget {
                   index: homeController.selectedNavbar.value,
                   children: [
                     Home(
-                      name: homeController.name.value,
+                      name: homeController.users!.user!.name,
+                      status: homeController.users!.status,
+                      balance: homeController.balance,
+                      tronAddress: homeController.tronAdress,
                     ),
                     Information(),
                     Setting(),

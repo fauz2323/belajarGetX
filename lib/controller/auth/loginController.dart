@@ -12,7 +12,7 @@ import 'package:profmoonv2/view/home/homeApp.dart';
 
 class LoginController extends GetxController {
   var lock = true.obs;
-  var load = true.obs;
+  var load = false.obs;
   var press = true.obs;
   LoginData? data;
   var secure = true.obs;
@@ -22,7 +22,6 @@ class LoginController extends GetxController {
 
   _init() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
-
     version.value = packageInfo.version;
     load = false.obs;
   }
@@ -44,18 +43,16 @@ class LoginController extends GetxController {
       data = LoginData.fromJson(json.decode(response.body));
       jsonvar = json.decode(response.body);
       // sharedPreferences.setString('token', jsonvar['token']);
-      final box = GetStorage();
-      box.write('key', data?.token);
 
       await storage.write(key: "key", value: data?.token);
       await storage.write(key: 'tronAdress', value: data?.tronAdress);
       await storage.write(key: 'privatkey', value: data?.key);
-
+      print("Masuk sini part 2");
       load.value = false;
-      Get.off(Homes());
+      Get.offAll(() => Homes());
     } else if (response.statusCode == 301) {
       load.value = false;
-      Get.off(VerifPage());
+      Get.off(() => Homes());
     } else if (response.statusCode == 401) {
       load.value = false;
       print("gjhkbjnlk");
@@ -73,5 +70,12 @@ class LoginController extends GetxController {
     // TODO: implement onInit
     super.onInit();
     _init();
+  }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+    load.value = false;
   }
 }
