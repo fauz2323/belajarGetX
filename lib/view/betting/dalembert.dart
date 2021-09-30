@@ -57,7 +57,7 @@ class Dalembert extends StatelessWidget {
                         ),
                         Obx(
                           () => Text(
-                              "Probability = ${dalembertController.sliderValue.value}%"),
+                              "Probability = ${dalembertController.sliderValue.value.toStringAsFixed(1)}%"),
                         ),
                         SliderBetting(
                           data: (val) {
@@ -69,7 +69,7 @@ class Dalembert extends StatelessWidget {
                         ),
                         Obx(
                           () => Text(
-                              "Target = ${dalembertController.targetValue.value}%"),
+                              "Target = ${dalembertController.targetValue.value.toInt()}%"),
                         ),
                         SliderBetting(
                           data: (val) {
@@ -81,7 +81,7 @@ class Dalembert extends StatelessWidget {
                         ),
                         Obx(
                           () => Text(
-                              "Cut Lose = ${dalembertController.lossValue.value}%"),
+                              "Cut Lose = ${dalembertController.lossValue.value.toInt()}%"),
                         ),
                         SliderBetting(
                           data: (val) {

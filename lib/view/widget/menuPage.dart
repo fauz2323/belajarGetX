@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:profmoonv2/model/history/depoHistory.dart';
 import 'package:profmoonv2/view/betting/betting.dart';
 import 'package:profmoonv2/view/betting/manualBetting.dart';
 import 'package:profmoonv2/view/network/networkUser.dart';
 import 'package:profmoonv2/view/purchase/purchase.dart';
 import 'package:profmoonv2/view/reffRegis/reffRegis.dart';
+import 'package:profmoonv2/view/transfer/historyDepo.dart';
 import 'package:profmoonv2/view/transfer/historyWd.dart';
 import 'package:profmoonv2/view/transfer/transfer.dart';
 import 'package:profmoonv2/view/wallet/walletAdress.dart';
@@ -14,10 +16,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class MenuPage extends StatelessWidget {
   final reff;
   final token;
-  final balance;
+  final String balance;
   final status;
 
-  const MenuPage({Key? key, this.token, this.balance, this.reff, this.status})
+  const MenuPage(
+      {Key? key, this.token, required this.balance, this.reff, this.status})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -69,15 +72,13 @@ class MenuPage extends StatelessWidget {
                   icon: FaIcon(FontAwesomeIcons.fileSignature),
                   title: 'Withdraw History',
                 ),
-                // HomeMenu(
-                //   title: "Deposit Address",
-                //   fun: () {
-                //     Get.to(() => WalletAddress(
-                //           name: "Wallet Adress",
-                //         ));
-                //   },
-                //   icon: FaIcon(FontAwesomeIcons.qrcode),
-                // ),
+                HomeMenu(
+                  title: "Deposit History",
+                  fun: () {
+                    Get.to(() => HistoryDepoView());
+                  },
+                  icon: FaIcon(FontAwesomeIcons.fileMedical),
+                ),
                 HomeMenu(
                   icon: FaIcon(FontAwesomeIcons.gem),
                   fun: (status == 'paid')
@@ -90,7 +91,7 @@ class MenuPage extends StatelessWidget {
                                 status: status,
                               ));
                         },
-                  title: "Purchase",
+                  title: "Activation",
                 ),
                 HomeMenu(
                   icon: FaIcon(FontAwesomeIcons.userPlus),
@@ -104,7 +105,7 @@ class MenuPage extends StatelessWidget {
                 HomeMenu(
                   icon: FaIcon(FontAwesomeIcons.clone),
                   fun: () {
-                    Get.off(() => manualBetting());
+                    Get.off(() => manualBetting(), arguments: balance);
                   },
                   title: "Manual Multiply",
                 ),

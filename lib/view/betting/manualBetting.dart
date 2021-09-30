@@ -54,7 +54,7 @@ class manualBetting extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     SizedBox(
-                                      width: width * 50 / 100,
+                                      width: width * 40 / 100,
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: TextFormField(
@@ -70,7 +70,7 @@ class manualBetting extends StatelessWidget {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: width * 10 / 100,
+                                      width: width * 15 / 100,
                                       child: TextButton(
                                         onPressed: () {
                                           var total = double.parse(
@@ -81,7 +81,7 @@ class manualBetting extends StatelessWidget {
                                               .startController
                                               .text = total.toString();
                                         },
-                                        child: Text('1/2'),
+                                        child: Text('×½'),
                                         style: TextButton.styleFrom(
                                           primary: Colors.white,
                                           backgroundColor: Colors.blue,
@@ -92,7 +92,7 @@ class manualBetting extends StatelessWidget {
                                       width: 10,
                                     ),
                                     SizedBox(
-                                      width: width * 10 / 100,
+                                      width: width * 15 / 100,
                                       child: TextButton(
                                         onPressed: () {
                                           var total = double.parse(
@@ -103,7 +103,7 @@ class manualBetting extends StatelessWidget {
                                               .startController
                                               .text = total.toString();
                                         },
-                                        child: Text('2'),
+                                        child: Text('×2'),
                                         style: TextButton.styleFrom(
                                           primary: Colors.white,
                                           backgroundColor: Colors.blue,
@@ -133,8 +133,8 @@ class manualBetting extends StatelessWidget {
                                     onChanged: (double val) {
                                       manualBettingController
                                           .sliderValue.value = val;
-                                      manualBettingController
-                                          .probController.text = val.toString();
+                                      manualBettingController.probController
+                                          .text = val.toStringAsFixed(1);
                                     }),
                                 Row(
                                   mainAxisAlignment:

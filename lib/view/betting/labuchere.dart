@@ -58,7 +58,7 @@ class Labouchere extends StatelessWidget {
                         ),
                         Obx(
                           () => Text(
-                              "Probability = ${labouchereController.slideValue.value}%"),
+                              "Probability = ${labouchereController.slideValue.value.toStringAsFixed(1)}%"),
                         ),
                         SliderBetting(
                           data: (val) {
@@ -70,7 +70,7 @@ class Labouchere extends StatelessWidget {
                         ),
                         Obx(
                           () => Text(
-                              "Target = ${labouchereController.targetValue.value}%"),
+                              "Target = ${labouchereController.targetValue.value.toInt()}%"),
                         ),
                         SliderBetting(
                             min: 1,
@@ -81,7 +81,7 @@ class Labouchere extends StatelessWidget {
                             }),
                         Obx(
                           () => Text(
-                              "Cut Lose = ${labouchereController.lossValue.value}%"),
+                              "Cut Lose = ${labouchereController.lossValue.value.toInt()}%"),
                         ),
                         SliderBetting(
                             min: 1,

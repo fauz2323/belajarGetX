@@ -159,18 +159,29 @@ class TronTransfer extends StatelessWidget {
                                 ),
                                 child: TextButton(
                                   onPressed: () {
-                                    // tronTransferController.load.value = true;
-                                    var angka = double.parse(
+                                    if (tronTransferController
+                                            .banyakController.text.isEmpty ||
+                                        tronTransferController.addressController
+                                            .value.text.isEmpty ||
                                         tronTransferController
-                                            .banyakController.text);
-                                    print("aaasss");
+                                            .pinController.text.isEmpty) {
+                                      Get.snackbar("error", "Empty Form");
+                                    } else {
+                                      tronTransferController.load.value = true;
 
-                                    tronTransferController.proses(
-                                      angka.toString(),
-                                      tronTransferController
-                                          .addressController.value.text,
-                                      tronTransferController.pinController.text,
-                                    );
+                                      var angka = double.parse(
+                                          tronTransferController
+                                              .banyakController.text);
+                                      print("aaasss");
+
+                                      tronTransferController.proses(
+                                        angka.toString(),
+                                        tronTransferController
+                                            .addressController.value.text,
+                                        tronTransferController
+                                            .pinController.text,
+                                      );
+                                    }
                                   },
                                   child: Text(
                                     "Submit",

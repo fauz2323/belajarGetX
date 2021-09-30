@@ -50,7 +50,7 @@ class Martiangle extends StatelessWidget {
                                 color: Colors.blue,
                               )),
                           child: Text(
-                              "Balance : ${martiangleController.balance1}"),
+                              "Balance : ${martiangleController.balance1} TRON"),
                         ),
                         SizedBox(
                           height: height * 5 / 100,
@@ -61,7 +61,7 @@ class Martiangle extends StatelessWidget {
                         ),
                         Obx(
                           () => Text(
-                              "Probability = ${martiangleController.slideValue.value}%"),
+                              "Probability = ${martiangleController.slideValue.value.toStringAsFixed(1)}%"),
                         ),
                         SliderBetting(
                           data: (val) {
@@ -94,7 +94,7 @@ class Martiangle extends StatelessWidget {
 
                         Obx(
                           () => Text(
-                              "Target = ${martiangleController.sliderTarget.value}%"),
+                              "Target = ${martiangleController.sliderTarget.value.toInt()}%"),
                         ),
                         SliderBetting(
                           data: (val) {
@@ -106,7 +106,7 @@ class Martiangle extends StatelessWidget {
                         ),
                         Obx(
                           () => Text(
-                              "Cut Lose = ${martiangleController.sliderLose.value}%"),
+                              "Cut Lose = ${martiangleController.sliderLose.value.toInt()}%"),
                         ),
                         SliderBetting(
                           data: (val) {

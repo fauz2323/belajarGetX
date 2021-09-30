@@ -37,7 +37,7 @@ class FibbonacciController extends GetxController {
     var jsonz = json.decode(response.body);
     balance = double.parse(jsonz['Balance']) * 1 / 100;
     balance1 = double.parse(jsonz['Balance']);
-    startController = TextEditingController(text: balance.toStringAsFixed(8));
+    startController = TextEditingController(text: balance.toStringAsFixed(6));
     ifLoseController = TextEditingController(text: '2');
     ifWinController = TextEditingController(text: '1');
     load.value = false;

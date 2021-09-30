@@ -37,7 +37,7 @@ class MartiangleController extends GetxController {
     var jsonz = json.decode(response.body);
     balance = double.parse(jsonz['Balance']) * 1 / 100;
     balance1 = double.parse(jsonz['Balance']);
-    startController = TextEditingController(text: balance.toStringAsFixed(2));
+    startController = TextEditingController(text: balance.toStringAsFixed(6));
     ifloseController = TextEditingController(text: '2');
     load.value = false;
   }

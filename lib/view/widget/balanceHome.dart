@@ -40,7 +40,7 @@ class BalanceHome extends StatelessWidget {
                 height: 40,
               ),
               Text(title),
-              Text(balance.toString()),
+              Text(balance),
             ],
           ),
           Container(

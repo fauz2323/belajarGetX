@@ -60,7 +60,7 @@ class Fibonacci extends StatelessWidget {
                         ),
                         Obx(
                           () => Text(
-                              "Probability = ${fibbonacciController.slideValue.value}%"),
+                              "Probability = ${fibbonacciController.slideValue.value.toStringAsFixed(1)}%"),
                         ),
                         SliderBetting(
                           data: (val) {
@@ -82,7 +82,7 @@ class Fibonacci extends StatelessWidget {
                         ),
                         Obx(
                           () => Text(
-                              "Target = ${fibbonacciController.sliderTarget.value}%"),
+                              "Target = ${fibbonacciController.sliderTarget.value.toInt()}%"),
                         ),
                         SliderBetting(
                           data: (val) {
@@ -94,7 +94,7 @@ class Fibonacci extends StatelessWidget {
                         ),
                         Obx(
                           () => Text(
-                              "Cut Lose = ${fibbonacciController.sliderLose.value}%"),
+                              "Cut Lose = ${fibbonacciController.sliderLose.value.toInt()}%"),
                         ),
                         SliderBetting(
                           data: (val) {

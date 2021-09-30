@@ -18,7 +18,9 @@ class ManualBettingController extends GetxController {
   var loading = false.obs;
   var balance = ''.obs;
 
-  init() async {
+  initz() async {
+    print(Get.arguments);
+    balance.value = Get.arguments;
     token = await storage.read(key: 'key');
   }
 
@@ -56,7 +58,7 @@ class ManualBettingController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    init();
+    initz();
     probController.text = '49.99';
   }
 

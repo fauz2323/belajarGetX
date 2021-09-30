@@ -96,6 +96,7 @@ class Home extends StatelessWidget {
           ),
           Expanded(
             child: MenuPage(
+              balance: balance,
               status: status,
               reff: name,
             ),

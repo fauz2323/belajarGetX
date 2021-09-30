@@ -36,7 +36,7 @@ class DalembertController extends GetxController {
     balance = double.parse(jsonz['Balance']) * 1 / 100;
     balance1 = double.parse(jsonz['Balance']);
 
-    startController = TextEditingController(text: balance.toStringAsFixed(4));
+    startController = TextEditingController(text: balance.toStringAsFixed(6));
     load.value = false;
   }
 
