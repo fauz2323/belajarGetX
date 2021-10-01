@@ -67,7 +67,7 @@ class DalembertProses extends StatelessWidget {
                       children: [
                         Text("Balance"),
                         Obx(() => Text(dalembertProsesController.balance1
-                            .toStringAsFixed(4)))
+                            .toStringAsFixed(6)))
                       ],
                     ),
                     Column(
@@ -82,7 +82,7 @@ class DalembertProses extends StatelessWidget {
                       children: [
                         Text("Profit"),
                         Obx(() => Text(dalembertProsesController.profit
-                            .toStringAsFixed(4))),
+                            .toStringAsFixed(6))),
                       ],
                     )
                   ],
@@ -115,7 +115,7 @@ class DalembertProses extends StatelessWidget {
                                   ),
                                   DataCell(
                                     Text(
-                                      datarows.result.payOut.toString(),
+                                      datarows.result.payOut.toStringAsFixed(6),
                                       style: TextStyle(color: datarows.warna),
                                     ),
                                   )

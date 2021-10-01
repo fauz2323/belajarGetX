@@ -47,7 +47,7 @@ class Labouchere extends StatelessWidget {
                                   color: Colors.blue,
                                 )),
                             child: Text(
-                                "Balance : ${labouchereController.balance1}")),
+                                "Balance : ${labouchereController.balance1} TRON")),
                         SizedBox(
                           height: height * 5 / 100,
                         ),
@@ -101,9 +101,8 @@ class Labouchere extends StatelessWidget {
                               Get.snackbar("Message", "Prbability to High");
                             } else {
                               var prob = (labouchereController.slideValue /
-                                      100 *
-                                      1000) -
-                                  1;
+                                  100 *
+                                  1000);
                               var target = labouchereController.balance1 +
                                   ((labouchereController.targetValue / 100) *
                                       labouchereController.balance1);
@@ -131,7 +130,7 @@ class Labouchere extends StatelessWidget {
                             ),
                             padding: EdgeInsets.all(10),
                             child: Text(
-                              "SUBMIT",
+                              "Start Roll",
                               style: TextStyle(color: Colors.white),
                             ),
                           ),

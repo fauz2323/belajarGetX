@@ -53,20 +53,20 @@ class DalembertProsesController extends GetxController {
             colorwin.value = true;
             graphPosition.value++;
             profit.value = profit.value - reset.value;
-            reset.value = reset.value + double.parse(Get.arguments['start']);
+            reset.value = reset.value + double.parse(Get.arguments['ifLose']);
             stop = stop;
           } else {
-            if (reset.value > double.parse(Get.arguments['start'])) {
+            if (reset.value > double.parse(Get.arguments['start']) &&
+                reset.value > double.parse(Get.arguments['ifWin'])) {
               print(jsonData['result']['message']);
               jsonData['warna'] = Colors.black;
-
               balance1.value = double.parse(jsonData['ballance']['Balance']);
               betting.add(Betting.fromJson(jsonData));
               colorwin.value = false;
               graphPosition.value++;
               profit.value =
                   profit.value + (jsonData['result']['payOut'] - reset.value);
-              reset.value = reset.value - double.parse(Get.arguments['start']);
+              reset.value = reset.value - double.parse(Get.arguments['ifWin']);
               stop = stop;
             } else {
               print(jsonData['result']['message']);

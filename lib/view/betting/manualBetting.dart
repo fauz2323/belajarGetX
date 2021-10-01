@@ -154,10 +154,9 @@ class manualBetting extends StatelessWidget {
                                     ElevatedButton(
                                         onPressed: () {
                                           var prob = (manualBettingController
-                                                      .sliderValue.value /
-                                                  100 *
-                                                  1000) -
-                                              1;
+                                                  .sliderValue.value /
+                                              100 *
+                                              1000);
                                           if (manualBettingController
                                               .startController.text.isEmpty) {
                                             Get.snackbar("error", "Empty Form");
@@ -190,7 +189,7 @@ class manualBetting extends StatelessWidget {
                     height: height * 5 / 100,
                     child: Align(
                       child: Text(
-                        "Balance : ${manualBettingController.balance.value}",
+                        "Balance : ${manualBettingController.balance.value} TRON",
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold),
                       ),
@@ -229,7 +228,8 @@ class manualBetting extends StatelessWidget {
                                       ),
                                       DataCell(
                                         Text(
-                                          datarows.result.payOut.toString(),
+                                          datarows.result.payOut
+                                              .toStringAsFixed(6),
                                           style:
                                               TextStyle(color: datarows.warna),
                                         ),

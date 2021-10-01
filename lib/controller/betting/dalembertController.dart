@@ -6,6 +6,8 @@ import 'dart:convert';
 
 class DalembertController extends GetxController {
   late TextEditingController startController;
+  late TextEditingController ifWinController;
+  late TextEditingController ifLoseController;
 
   final TextEditingController probController =
       TextEditingController(text: '50');
@@ -33,10 +35,12 @@ class DalembertController extends GetxController {
     });
     print(response.statusCode);
     var jsonz = json.decode(response.body);
-    balance = double.parse(jsonz['Balance']) * 1 / 100;
+    balance = double.parse(jsonz['Balance']) * 1 / 1000;
     balance1 = double.parse(jsonz['Balance']);
 
     startController = TextEditingController(text: balance.toStringAsFixed(6));
+    ifWinController = TextEditingController(text: balance.toStringAsFixed(6));
+    ifLoseController = TextEditingController(text: balance.toStringAsFixed(6));
     load.value = false;
   }
 

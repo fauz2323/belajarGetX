@@ -68,7 +68,7 @@ class FibonacciProses extends StatelessWidget {
                         children: [
                           Text("Balance"),
                           Text(fibbonacciProsesController.balance1.value
-                              .toStringAsFixed(4))
+                              .toStringAsFixed(6))
                         ],
                       ),
                     ),
@@ -84,7 +84,7 @@ class FibonacciProses extends StatelessWidget {
                           children: [
                             Text("Profit"),
                             Text(fibbonacciProsesController.profit.value
-                                .toStringAsFixed(4))
+                                .toStringAsFixed(6))
                           ],
                         ))
                   ],
@@ -116,7 +116,7 @@ class FibonacciProses extends StatelessWidget {
                                   ),
                                   DataCell(
                                     Text(
-                                      datarows.result.payOut.toString(),
+                                      datarows.result.payOut.toStringAsFixed(6),
                                       style: TextStyle(color: datarows.warna),
                                     ),
                                   )

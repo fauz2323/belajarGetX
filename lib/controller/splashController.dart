@@ -7,7 +7,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:package_info/package_info.dart';
 import 'package:profmoonv2/view/auth/login.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:profmoonv2/view/home/homeApp.dart';
 import 'package:profmoonv2/view/update/updateversion.dart';
 
@@ -16,23 +15,21 @@ class SplashController extends GetxController {
   var status = false;
   final storage = FlutterSecureStorage();
   final uri = Uri.parse("https://profmoon.com/api/verCheck");
-  final box = GetStorage();
 
   init() async {
     var duration = Duration(seconds: 4);
-    String value = box.read('key') ?? '';
-    print(value);
     return Timer(duration, () async {
       PackageInfo packageInfo = await PackageInfo.fromPlatform();
       String version = packageInfo.version;
       final res = await http.get(uri);
-      var a = await storage.read(key: 'key') ?? '';
+      var a = await storage.read(key: 'key');
+      print(a);
       final data = json.decode(res.body);
       print("res : $a");
       print(version);
 
       if (version.toString() == data['version']) {
-        if (a == '') {
+        if (a == null) {
           print("1");
           Get.off(() => Login(
                 version: version,

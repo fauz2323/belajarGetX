@@ -68,7 +68,7 @@ class LabouchereProses extends StatelessWidget {
                       children: [
                         Text("Balance"),
                         Obx(() => Text(labouchereProsesController.balance1
-                            .toStringAsFixed(4)))
+                            .toStringAsFixed(6)))
                       ],
                     ),
                     Column(
@@ -83,7 +83,7 @@ class LabouchereProses extends StatelessWidget {
                       children: [
                         Text("Profit"),
                         Obx(() => Text(labouchereProsesController.profit
-                            .toStringAsFixed(4))),
+                            .toStringAsFixed(6))),
                       ],
                     )
                   ],
@@ -129,7 +129,7 @@ class LabouchereProses extends StatelessWidget {
                                   ),
                                   DataCell(
                                     Text(
-                                      datarows.result.payOut.toString(),
+                                      datarows.result.payOut.toStringAsFixed(6),
                                       style: TextStyle(color: datarows.warna),
                                     ),
                                   )

@@ -49,7 +49,7 @@ class Fibonacci extends StatelessWidget {
                                 color: Colors.blue,
                               )),
                           child: Text(
-                              "Balance : ${fibbonacciController.balance1}"),
+                              "Balance : ${fibbonacciController.balance1} TRON"),
                         ),
                         SizedBox(
                           height: height * 5 / 100,
@@ -110,9 +110,8 @@ class Fibonacci extends StatelessWidget {
                               Get.snackbar("Message", "Prbability to High");
                             } else {
                               var prob = (fibbonacciController.slideValue /
-                                      100 *
-                                      1000) -
-                                  1;
+                                  100 *
+                                  1000);
                               var target = fibbonacciController.balance1 +
                                   ((fibbonacciController.sliderTarget / 100) *
                                       fibbonacciController.balance1);
@@ -144,7 +143,7 @@ class Fibonacci extends StatelessWidget {
                             ),
                             padding: EdgeInsets.all(10),
                             child: Text(
-                              "SUBMIT",
+                              "Start Roll",
                               style: TextStyle(color: Colors.white),
                             ),
                           ),

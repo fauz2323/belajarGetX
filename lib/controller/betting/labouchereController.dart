@@ -32,7 +32,7 @@ class LabouchereController extends GetxController {
     });
     print(response.statusCode);
     var jsonz = json.decode(response.body);
-    balance = double.parse(jsonz['Balance']) * 1 / 100;
+    balance = double.parse(jsonz['Balance']) * 1 / 1000;
     balance1 = double.parse(jsonz['Balance']);
     startController = TextEditingController(text: balance.toStringAsFixed(6));
     load.value = false;

@@ -45,8 +45,8 @@ class Dalembert extends StatelessWidget {
                               border: Border.all(
                                 color: Colors.blue,
                               )),
-                          child:
-                              Text("Balance : ${dalembertController.balance1}"),
+                          child: Text(
+                              "Balance : ${dalembertController.balance1} TRON"),
                         ),
                         SizedBox(
                           height: height * 5 / 100,
@@ -66,6 +66,14 @@ class Dalembert extends StatelessWidget {
                           min: 10,
                           max: 90,
                           value: dalembertController.sliderValue.value,
+                        ),
+                        FormBetting(
+                          controller: dalembertController.ifWinController,
+                          name: 'If Win',
+                        ),
+                        FormBetting(
+                          controller: dalembertController.ifLoseController,
+                          name: 'If Lose',
                         ),
                         Obx(
                           () => Text(
@@ -103,9 +111,8 @@ class Dalembert extends StatelessWidget {
                             } else {
                               var prob =
                                   (dalembertController.sliderValue.value /
-                                          100 *
-                                          1000) -
-                                      1;
+                                      100 *
+                                      1000);
                               var target = dalembertController.balance1 +
                                   ((dalembertController.targetValue.value /
                                           100) *
@@ -120,6 +127,10 @@ class Dalembert extends StatelessWidget {
                                 'target': target,
                                 'start':
                                     dalembertController.startController.text,
+                                'ifLose':
+                                    dalembertController.ifLoseController.text,
+                                'ifWin':
+                                    dalembertController.ifWinController.text,
                               };
                               Get.off(() => DalembertProses(),
                                   arguments: argument);

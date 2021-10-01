@@ -134,8 +134,7 @@ class Martiangle extends StatelessWidget {
                             } else {
                               var prob =
                                   (martiangleController.slideValue / 100) *
-                                          1000 -
-                                      1;
+                                      1000;
                               var target = martiangleController.balance1 +
                                   (martiangleController.sliderTarget / 100) *
                                       martiangleController.balance1;

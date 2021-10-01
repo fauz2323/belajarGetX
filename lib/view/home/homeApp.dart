@@ -64,8 +64,8 @@ class Homes extends StatelessWidget {
                     Home(
                       name: homeController.users!.user!.name,
                       status: homeController.users!.status,
-                      balance: homeController.balance,
                       tronAddress: homeController.tronAdress,
+                      balance: homeController.balance.value,
                     ),
                     Information(),
                     Setting(),

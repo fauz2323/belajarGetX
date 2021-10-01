@@ -46,6 +46,7 @@ class ManualBettingController extends GetxController {
           dataJson['warna'] = Colors.black;
         }
         balance.value = dataJson['ballance']['Balance'];
+        print(dataJson);
         betting.add(Betting.fromJson(dataJson));
       }
     } else {

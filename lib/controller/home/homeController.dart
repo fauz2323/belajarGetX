@@ -15,7 +15,7 @@ class HomesController extends GetxController {
   var controller = PageController().obs;
   final storage = new FlutterSecureStorage();
   var load = true.obs;
-  var balance;
+  var balance = ''.obs;
   var tronAdress;
   Data? users;
   var privatKey;
@@ -50,7 +50,7 @@ class HomesController extends GetxController {
     print('print masuk homes ${response.body}');
     if (response.statusCode == 200) {
       users = Data.fromJson(json.decode(response.body));
-      balance = json.decode(response2.body)['Balance'];
+      balance.value = json.decode(response2.body)['Balance'];
     } else {
       print("masuk login");
       await storage.deleteAll();
@@ -89,7 +89,7 @@ class HomesController extends GetxController {
 
     print(privatKey);
     if (response2.statusCode == 200) {
-      tronBalance.value = json.decode(response2.body)['Balance'];
+      balance.value = json.decode(response2.body)['Balance'];
       final response1 = await http.post(uri3, body: body);
       final dataJson = json.decode(response1.body);
       if (dataJson['data']['trxbalance'] != null) {
@@ -105,7 +105,7 @@ class HomesController extends GetxController {
           });
           if (res.statusCode == 200) {
             var data = json.decode(res.body);
-            tronBalance.value = data['data'].toString();
+            balance.value = data['data'].toString();
           }
           print('aa ${res.statusCode}');
         }
@@ -135,8 +135,8 @@ class HomesController extends GetxController {
     // TODO: implement onInit
     super.onInit();
     init();
-    print("2231123123123");
     time = Timer.periodic(Duration(seconds: 20), (timer) => check());
+    print("2231123123123");
   }
 
   @override
@@ -144,7 +144,7 @@ class HomesController extends GetxController {
     // TODO: implement onClose
     super.onClose();
     print('closeObjg');
-    time.cancel();
     load.value = false;
+    time.cancel();
   }
 }

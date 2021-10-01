@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:profmoonv2/controller/home/homeAppController.dart';
-import 'package:profmoonv2/view/notifScreen/success.dart';
 import 'package:profmoonv2/view/wallet/walletAdress.dart';
 import 'package:profmoonv2/view/widget/balanceHome.dart';
 import 'package:profmoonv2/view/widget/menuPage.dart';
@@ -71,7 +70,9 @@ class Home extends StatelessWidget {
                     //       name: 'PASEO',
                     //     ));
                     // Get.to(Success());
-                    Get.to(() => WalletAddress());
+                    Get.to(() => WalletAddress(
+                          name: 'TRON',
+                        ));
                   },
                   child: BalanceHome(
                     title: "TRON",

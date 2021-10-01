@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:profmoonv2/controller/auth/loginController.dart';
+import 'package:profmoonv2/view/auth/forgotPass.dart';
 import 'package:profmoonv2/view/auth/ragister.dart';
 
 class Login extends StatelessWidget {
@@ -156,7 +157,9 @@ class Login extends StatelessWidget {
                           ],
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(() => ForgotPass());
+                          },
                           child: Container(
                             child: Text("Forgot Password"),
                           ),

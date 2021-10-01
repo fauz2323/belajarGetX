@@ -29,6 +29,7 @@ class HomeAppController extends GetxController {
   var url = Uri.parse("https://profmoon.com/api/authtest");
   var uri3 = Uri.parse('https://paseo.live/paseo/CekSaldo');
   var uri2 = Uri.parse('https://profmoon.com/api/getBalance');
+  var balance = ''.obs;
 
   init() async {
     token = await storage.read(key: 'key');
@@ -141,7 +142,6 @@ class HomeAppController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    init();
     time = Timer.periodic(Duration(seconds: 20), (timer) => check());
   }
 

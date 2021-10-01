@@ -74,7 +74,7 @@ class MartiangleProses extends StatelessWidget {
                         children: [
                           Text("Balance"),
                           Text(martiangleProsesCOntroller.balance1.value
-                              .toStringAsFixed(4))
+                              .toStringAsFixed(6))
                         ],
                       ),
                     ),
@@ -90,7 +90,7 @@ class MartiangleProses extends StatelessWidget {
                           children: [
                             Text("Profit"),
                             Text(martiangleProsesCOntroller.profit.value
-                                .toStringAsFixed(4))
+                                .toStringAsFixed(6))
                           ],
                         ))
                   ],
@@ -122,7 +122,7 @@ class MartiangleProses extends StatelessWidget {
                                   ),
                                   DataCell(
                                     Text(
-                                      datarows.result.payOut.toString(),
+                                      datarows.result.payOut.toStringAsFixed(6),
                                       style: TextStyle(color: datarows.warna),
                                     ),
                                   )
