@@ -8,6 +8,7 @@ import 'package:package_info/package_info.dart';
 import 'package:http/http.dart' as http;
 import 'package:profmoonv2/model/auth/loginModel.dart';
 import 'package:profmoonv2/view/auth/verif.dart';
+import 'package:profmoonv2/view/home/home.dart';
 import 'package:profmoonv2/view/home/homeApp.dart';
 
 class LoginController extends GetxController {
@@ -52,7 +53,7 @@ class LoginController extends GetxController {
       Get.offAll(() => Homes());
     } else if (response.statusCode == 301) {
       load.value = false;
-      Get.off(() => Homes());
+      Get.off(() => Home());
     } else if (response.statusCode == 401) {
       load.value = false;
       print("gjhkbjnlk");

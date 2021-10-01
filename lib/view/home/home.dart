@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:profmoonv2/controller/home/homeAppController.dart';
 import 'package:profmoonv2/view/notifScreen/success.dart';
@@ -58,11 +59,19 @@ class Home extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 InkWell(
+                  onLongPress: () {
+                    Clipboard.setData(ClipboardData(text: tronAddress)).then(
+                        (value) => ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content:
+                                    Text("Copy Deposit Address Success"))));
+                  },
                   onTap: () {
                     // Get.to(() => WalletAddress(
                     //       name: 'PASEO',
                     //     ));
-                    Get.to(Success());
+                    // Get.to(Success());
+                    Get.to(() => WalletAddress());
                   },
                   child: BalanceHome(
                     title: "TRON",
