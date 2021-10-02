@@ -101,7 +101,7 @@ class PurchaseController extends GetxController {
         body: codes);
 
     if (response.statusCode == 200) {
-      Get.off(Homes());
+      Get.off(() => Homes());
       Get.snackbar("Message", "Purchase Success");
     } else if (response.statusCode == 222) {
       Get.snackbar("Error", "Code Reedem Not Found");

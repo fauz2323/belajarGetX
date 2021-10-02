@@ -4,7 +4,8 @@ import 'package:profmoonv2/controller/auth/reffRegisterController.dart';
 
 class ReffRegis extends StatelessWidget {
   final reff;
-  final reffRegisController = Get.put(ReffRegisterController());
+  ReffRegisterController reffRegisController =
+      Get.put(ReffRegisterController());
   ReffRegis({Key? key, this.reff}) : super(key: key);
 
   @override
