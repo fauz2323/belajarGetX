@@ -13,7 +13,7 @@ class MultiplyController extends GetxController {
   check() async {
     keyToken = await storage.read(key: "key");
     final response = await http.get(
-      Uri.parse('https://profmoon.com/api/checkgame'),
+      Uri.parse('https://profmoon.com/api/checkingDataGame'),
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',

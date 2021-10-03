@@ -13,6 +13,8 @@ class MartiangleController extends GetxController {
   var balance1;
   var load = true.obs;
   var checkbox = true.obs;
+
+  var gameStatus = false.obs;
   late TextEditingController startController;
   late TextEditingController ifloseController;
 
@@ -39,6 +41,27 @@ class MartiangleController extends GetxController {
     balance1 = double.parse(jsonz['Balance']);
     startController = TextEditingController(text: balance.toStringAsFixed(6));
     ifloseController = TextEditingController(text: '2');
+    load.value = false;
+  }
+
+  check() async {
+    keyToken = await storage.read(key: "key");
+    final response = await http.get(
+      Uri.parse('https://profmoon.com/api/checkgame'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $keyToken',
+      },
+    );
+    final stat = jsonDecode(response.body);
+    if (response.statusCode == 201) {
+      gameStatus.value = true;
+    } else {
+      gameStatus.value = false;
+    }
+
+    print(gameStatus);
     load.value = false;
   }
 
