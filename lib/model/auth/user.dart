@@ -2,14 +2,17 @@ class Data {
   Data({
     required this.status,
     this.user,
+    required this.exp,
   });
 
   final User? user;
   String status;
+  String exp;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         status: json['status'],
         user: User.fromJson(json["user"]),
+        exp: json['exp'],
       );
 }
 

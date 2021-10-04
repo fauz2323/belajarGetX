@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,7 +10,7 @@ class Purchase extends StatelessWidget {
   final status;
   final PurchaseController purchaseController = Get.put(PurchaseController());
   back() {
-    Get.off(Homes());
+    Get.off(() => Homes());
   }
 
   Purchase({Key? key, this.status}) : super(key: key);
@@ -30,7 +32,7 @@ class Purchase extends StatelessWidget {
         ),
         body: Center(
           child: Container(
-              height: height * 30 / 100,
+              height: height * 40 / 100,
               width: width * 80 / 100,
               decoration: BoxDecoration(
                   color: Colors.white,
@@ -61,7 +63,30 @@ class Purchase extends StatelessWidget {
                                 purchaseController.proses(
                                     purchaseController.codeController.text);
                               },
-                              child: Text('Submit'))
+                              child: Text('Submit')),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            'NOTE : ',
+                            style: TextStyle(color: Colors.red),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Text(
+                              "To be able to play to your heart's content, you need to activate, to get an activation pin please contact your upline or contact the tronapt community",
+                              textAlign: TextAlign.justify,
+                            ),
+                          ),
+                          // RichText(
+                          //   text: TextSpan(
+                          //       text:
+                          //           "To be able to play to your heart's content, you need to activate, to get an activation pin please contact your upline or contact the TronApt",
+                          //       style: TextStyle(color: Colors.black),
+                          //       children: <TextSpan>[
+                          //         TextSpan(text: 'Community')
+                          //       ]),
+                          // )
                         ],
                       ),
               )),

@@ -114,7 +114,29 @@ class Setting extends StatelessWidget {
                             height: 1,
                           ),
                           SizedBox(
-                            height: height * 10 / 100,
+                            height: 30,
+                          ),
+                          Text(
+                            "Expire",
+                            style: TextStyle(
+                                color: Colors.blue.shade200,
+                                fontWeight: FontWeight.w300,
+                                fontSize: 16),
+                          ),
+                          Text(
+                              (settingController.data.status == 'free')
+                                  ? '-'
+                                  : "${settingController.data.exp}",
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
+                              )),
+                          Divider(
+                            color: Colors.black,
+                            height: 1,
+                          ),
+                          SizedBox(
+                            height: height * 5 / 100,
                           ),
                           TextButton(
                             child: Container(
