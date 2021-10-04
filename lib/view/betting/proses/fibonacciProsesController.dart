@@ -6,13 +6,16 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:get/get.dart';
 
 class FibonacciProses extends StatelessWidget {
+  final status;
   final FibbonacciProsesController fibbonacciProsesController =
       Get.put(FibbonacciProsesController());
   back() {
-    Get.off(() => Multiply());
+    Get.off(() => Multiply(
+          status: status,
+        ));
   }
 
-  FibonacciProses({Key? key}) : super(key: key);
+  FibonacciProses({Key? key, required this.status}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

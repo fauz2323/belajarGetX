@@ -6,13 +6,16 @@ import 'package:profmoonv2/view/betting/betting.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class DalembertProses extends StatelessWidget {
+  final status;
   final DalembertProsesController dalembertProsesController =
       Get.put(DalembertProsesController());
   back() {
-    Get.off(() => Multiply());
+    Get.off(() => Multiply(
+          status: status,
+        ));
   }
 
-  DalembertProses({Key? key}) : super(key: key);
+  DalembertProses({Key? key, required this.status}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

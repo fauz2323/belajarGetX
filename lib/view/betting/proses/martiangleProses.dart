@@ -7,14 +7,18 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import '../betting.dart';
 
 class MartiangleProses extends StatelessWidget {
+  final status;
   final MartiangleProsesCOntroller martiangleProsesCOntroller =
       Get.put(MartiangleProsesCOntroller());
   back() {
-    Get.off(() => Multiply());
+    Get.off(() => Multiply(
+          status: status,
+        ));
   }
 
   MartiangleProses({
     Key? key,
+    required this.status,
   }) : super(key: key);
 
   @override

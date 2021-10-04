@@ -20,7 +20,11 @@ class MenuPage extends StatelessWidget {
   final status;
 
   const MenuPage(
-      {Key? key, this.token, required this.balance, this.reff, this.status})
+      {Key? key,
+      this.token,
+      required this.balance,
+      this.reff,
+      required this.status})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -112,7 +116,9 @@ class MenuPage extends StatelessWidget {
                 HomeMenu(
                   icon: FaIcon(FontAwesomeIcons.robot),
                   fun: () {
-                    Get.off(() => Multiply());
+                    Get.off(() => Multiply(
+                          status: status,
+                        ));
                   },
                   title: "Multiply BOT",
                 ),

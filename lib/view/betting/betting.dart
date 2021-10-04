@@ -9,8 +9,9 @@ import 'package:profmoonv2/view/betting/martiangle.dart';
 import 'package:profmoonv2/view/widget/multiplyMenu.dart';
 
 class Multiply extends StatelessWidget {
+  final status;
   final multiplyController = Get.put(MultiplyController());
-  Multiply({Key? key}) : super(key: key);
+  Multiply({Key? key, required this.status}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,9 @@ class Multiply extends StatelessWidget {
                                 multiplyController.status();
                               }
                             : () {
-                                Get.off(() => Martiangle());
+                                Get.off(() => Martiangle(
+                                      status: status,
+                                    ));
                               },
                       ),
                       BetMenu(
@@ -62,7 +65,7 @@ class Multiply extends StatelessWidget {
                                 multiplyController.status();
                               }
                             : () {
-                                Get.off(() => Dalembert());
+                                Get.off(() => Dalembert(status: status));
                               },
                       ),
                       BetMenu(
@@ -72,7 +75,7 @@ class Multiply extends StatelessWidget {
                                 multiplyController.status();
                               }
                             : () {
-                                Get.off(() => Fibonacci());
+                                Get.off(() => Fibonacci(status: status));
                               },
                         icon: FaIcon(
                           FontAwesomeIcons.sortNumericUp,
@@ -86,7 +89,7 @@ class Multiply extends StatelessWidget {
                                 multiplyController.status();
                               }
                             : () {
-                                Get.off(() => Labouchere());
+                                Get.off(() => Labouchere(status: status));
                               },
                         icon: Icon(
                           Icons.view_week,

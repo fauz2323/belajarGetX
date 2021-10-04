@@ -8,11 +8,14 @@ import 'package:profmoonv2/view/betting/proses/labouchereProsess.dart';
 import 'package:profmoonv2/view/betting/widgetBetting/sliderWidgetBetting.dart';
 
 class Labouchere extends StatelessWidget {
+  final status;
   final LabouchereController labouchereController =
       Get.put(LabouchereController());
-  Labouchere({Key? key}) : super(key: key);
+  Labouchere({Key? key, this.status}) : super(key: key);
   back() {
-    Get.off(() => Multiply());
+    Get.off(() => Multiply(
+          status: status,
+        ));
   }
 
   @override
@@ -61,6 +64,7 @@ class Labouchere extends StatelessWidget {
                               "Probability = ${labouchereController.slideValue.value.toStringAsFixed(1)}%"),
                         ),
                         SliderBetting(
+                          status: status,
                           data: (val) {
                             labouchereController.slideValue.value = val;
                           },
@@ -73,6 +77,7 @@ class Labouchere extends StatelessWidget {
                               "Target = ${labouchereController.targetValue.value.toInt()}%"),
                         ),
                         SliderBetting(
+                            status: status,
                             min: 1,
                             max: 90,
                             value: labouchereController.targetValue.value,
@@ -84,6 +89,7 @@ class Labouchere extends StatelessWidget {
                               "Cut Lose = ${labouchereController.lossValue.value.toInt()}%"),
                         ),
                         SliderBetting(
+                            status: status,
                             min: 1,
                             max: 90,
                             value: labouchereController.lossValue.value,
@@ -100,6 +106,7 @@ class Labouchere extends StatelessWidget {
                                 95) {
                               Get.snackbar("Message", "Prbability to High");
                             } else {
+                              labouchereController.check();
                               var prob = (labouchereController.slideValue /
                                   100 *
                                   1000);
@@ -117,7 +124,10 @@ class Labouchere extends StatelessWidget {
                                 'start':
                                     labouchereController.startController.text,
                               };
-                              Get.off(() => LabouchereProses(),
+                              Get.off(
+                                  () => LabouchereProses(
+                                        status: status,
+                                      ),
                                   arguments: argument);
                               // print(argument);
                             }

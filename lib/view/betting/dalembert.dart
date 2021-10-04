@@ -8,13 +8,16 @@ import 'package:profmoonv2/view/betting/proses/dalembertProses.dart';
 import 'package:profmoonv2/view/betting/widgetBetting/sliderWidgetBetting.dart';
 
 class Dalembert extends StatelessWidget {
+  final status;
   final DalembertController dalembertController =
       Get.put(DalembertController());
   back() {
-    Get.off(() => Multiply());
+    Get.off(() => Multiply(
+          status: status,
+        ));
   }
 
-  Dalembert({Key? key}) : super(key: key);
+  Dalembert({Key? key, this.status}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +63,7 @@ class Dalembert extends StatelessWidget {
                               "Probability = ${dalembertController.sliderValue.value.toStringAsFixed(1)}%"),
                         ),
                         SliderBetting(
+                          status: status,
                           data: (val) {
                             dalembertController.sliderValue.value = val;
                           },
@@ -80,6 +84,7 @@ class Dalembert extends StatelessWidget {
                               "Target = ${dalembertController.targetValue.value.toInt()}%"),
                         ),
                         SliderBetting(
+                          status: status,
                           data: (val) {
                             dalembertController.targetValue.value = val;
                           },
@@ -92,6 +97,7 @@ class Dalembert extends StatelessWidget {
                               "Cut Lose = ${dalembertController.lossValue.value.toInt()}%"),
                         ),
                         SliderBetting(
+                          status: status,
                           data: (val) {
                             dalembertController.lossValue.value = val;
                           },
@@ -109,6 +115,7 @@ class Dalembert extends StatelessWidget {
                                 95) {
                               Get.snackbar("Message", "Prbability to High");
                             } else {
+                              dalembertController.check();
                               var prob =
                                   (dalembertController.sliderValue.value /
                                       100 *
@@ -132,7 +139,10 @@ class Dalembert extends StatelessWidget {
                                 'ifWin':
                                     dalembertController.ifWinController.text,
                               };
-                              Get.off(() => DalembertProses(),
+                              Get.off(
+                                  () => DalembertProses(
+                                        status: status,
+                                      ),
                                   arguments: argument);
                               // print(argument);
                             }

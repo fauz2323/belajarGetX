@@ -8,12 +8,15 @@ import 'package:profmoonv2/view/betting/proses/martiangleProses.dart';
 import 'package:profmoonv2/view/betting/widgetBetting/sliderWidgetBetting.dart';
 
 class Martiangle extends StatelessWidget {
+  final status;
   final martiangleController = Get.put(MartiangleController());
   back() {
-    Get.off(() => Multiply());
+    Get.off(() => Multiply(
+          status: status,
+        ));
   }
 
-  Martiangle({Key? key}) : super(key: key);
+  Martiangle({Key? key, this.status}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +67,7 @@ class Martiangle extends StatelessWidget {
                               "Probability = ${martiangleController.slideValue.value.toStringAsFixed(1)}%"),
                         ),
                         SliderBetting(
+                          status: status,
                           data: (val) {
                             martiangleController.slideValue.value = val;
                           },
@@ -97,6 +101,7 @@ class Martiangle extends StatelessWidget {
                               "Target = ${martiangleController.sliderTarget.value.toInt()}%"),
                         ),
                         SliderBetting(
+                          status: status,
                           data: (val) {
                             martiangleController.sliderTarget.value = val;
                           },
@@ -109,6 +114,7 @@ class Martiangle extends StatelessWidget {
                               "Cut Lose = ${martiangleController.sliderLose.value.toInt()}%"),
                         ),
                         SliderBetting(
+                          status: status,
                           data: (val) {
                             martiangleController.sliderLose.value = val;
                           },
@@ -132,6 +138,7 @@ class Martiangle extends StatelessWidget {
                             if (martiangleController.slideValue.value > 95) {
                               Get.snackbar("Message", "Prbability to High");
                             } else {
+                              martiangleController.check();
                               var prob =
                                   (martiangleController.slideValue / 100) *
                                       1000;
@@ -152,7 +159,11 @@ class Martiangle extends StatelessWidget {
                                     martiangleController.ifloseController.text,
                                 'ifwin': martiangleController.checkbox.value,
                               };
-                              Get.off(() => MartiangleProses(),
+
+                              Get.off(
+                                  () => MartiangleProses(
+                                        status: status,
+                                      ),
                                   arguments: argument);
                               // print(argument);
                             }

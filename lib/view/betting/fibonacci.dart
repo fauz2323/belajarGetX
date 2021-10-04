@@ -9,13 +9,16 @@ import 'package:profmoonv2/view/betting/widgetBetting/sliderWidgetBetting.dart';
 import 'betting.dart';
 
 class Fibonacci extends StatelessWidget {
+  final status;
   final FibbonacciController fibbonacciController =
       Get.put(FibbonacciController());
   back() {
-    Get.off(() => Multiply());
+    Get.off(() => Multiply(
+          status: status,
+        ));
   }
 
-  Fibonacci({Key? key}) : super(key: key);
+  Fibonacci({Key? key, this.status}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +66,7 @@ class Fibonacci extends StatelessWidget {
                               "Probability = ${fibbonacciController.slideValue.value.toStringAsFixed(1)}%"),
                         ),
                         SliderBetting(
+                          status: status,
                           data: (val) {
                             fibbonacciController.slideValue.value = val;
                           },
@@ -85,6 +89,7 @@ class Fibonacci extends StatelessWidget {
                               "Target = ${fibbonacciController.sliderTarget.value.toInt()}%"),
                         ),
                         SliderBetting(
+                          status: status,
                           data: (val) {
                             fibbonacciController.sliderTarget.value = val;
                           },
@@ -97,6 +102,7 @@ class Fibonacci extends StatelessWidget {
                               "Cut Lose = ${fibbonacciController.sliderLose.value.toInt()}%"),
                         ),
                         SliderBetting(
+                          status: status,
                           data: (val) {
                             fibbonacciController.sliderLose.value = val;
                           },
@@ -109,6 +115,7 @@ class Fibonacci extends StatelessWidget {
                             if (fibbonacciController.slideValue > 95) {
                               Get.snackbar("Message", "Prbability to High");
                             } else {
+                              fibbonacciController.check();
                               var prob = (fibbonacciController.slideValue /
                                   100 *
                                   1000);
@@ -130,7 +137,10 @@ class Fibonacci extends StatelessWidget {
                                 'iflose':
                                     fibbonacciController.ifLoseController.text
                               };
-                              Get.off(() => FibonacciProses(),
+                              Get.off(
+                                  () => FibonacciProses(
+                                        status: status,
+                                      ),
                                   arguments: argument);
                               // print(argument);
                             }

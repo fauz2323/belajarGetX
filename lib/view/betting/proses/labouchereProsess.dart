@@ -6,13 +6,16 @@ import 'package:profmoonv2/view/betting/betting.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class LabouchereProses extends StatelessWidget {
+  final status;
   final LabouchereProsesController labouchereProsesController =
       Get.put(LabouchereProsesController());
   back() {
-    Get.off(() => Multiply());
+    Get.off(() => Multiply(
+          status: status,
+        ));
   }
 
-  LabouchereProses({Key? key}) : super(key: key);
+  LabouchereProses({Key? key, required this.status}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
