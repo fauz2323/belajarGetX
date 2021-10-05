@@ -28,6 +28,7 @@ class LoginController extends GetxController {
 
   login(String username, String pass) async {
     load.value = true;
+    print(load.value);
     final uri = Uri.parse("https://profmoon.com/api/login");
     final storage = new FlutterSecureStorage();
 

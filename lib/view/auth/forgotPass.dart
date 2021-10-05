@@ -60,7 +60,7 @@ class ForgotPass extends StatelessWidget {
                             controller: forgotPassController.emailController,
                             icons: Icons.email,
                             obsecure: false,
-                            label: "Email",
+                            label: "Username",
                           ),
                           ElevatedButton(
                               onPressed: () {
