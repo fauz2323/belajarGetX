@@ -80,11 +80,14 @@ class Homes extends StatelessWidget {
                       label: "Home",
                     ),
                     BottomNavigationBarItem(
-                      icon: Image.asset(
-                        'asset/image/trons.png',
-                        height: 30,
-                        width: 30,
+                      icon: ImageIcon(
+                        AssetImage('asset/image/trons.png'),
                       ),
+                      // icon: Image.asset(
+                      //   'asset/image/trons.png',
+                      //   height: 30,
+                      //   width: 30,
+                      // ),
                       label: "TRONSCAN",
                     ),
                     BottomNavigationBarItem(

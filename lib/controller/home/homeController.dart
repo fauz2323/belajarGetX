@@ -121,7 +121,7 @@ class HomesController extends GetxController {
     await storage.delete(key: "data");
     await storage.delete(key: 'tronAdress');
     await storage.delete(key: 'privatkey');
-    Get.offAll(() => Login());
+    Get.off(() => Login());
   }
 
   changeSelectedNumber(int index) {

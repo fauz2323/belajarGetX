@@ -16,13 +16,15 @@ class LoginController extends GetxController {
   var press = true.obs;
   LoginData? data;
   var secure = true.obs;
+  final storage = new FlutterSecureStorage();
   var version = ''.obs;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   _init() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    version.value = packageInfo.version;
+    // version.value = packageInfo.version;
+    version.value = (await storage.read(key: 'version'))!;
     load = false.obs;
   }
 
@@ -30,7 +32,6 @@ class LoginController extends GetxController {
     load.value = true;
     print(load.value);
     final uri = Uri.parse("https://profmoon.com/api/login");
-    final storage = new FlutterSecureStorage();
 
     Map body = {
       'username': username,
@@ -50,7 +51,7 @@ class LoginController extends GetxController {
       await storage.write(key: 'privatkey', value: data?.key);
       print("Masuk sini part 2");
       load.value = false;
-      Get.offAll(() => Homes());
+      Get.off(() => Homes());
     } else if (response.statusCode == 301) {
       load.value = false;
       Get.off(() => Home());
@@ -78,5 +79,6 @@ class LoginController extends GetxController {
     // TODO: implement onClose
     super.onClose();
     load.value = false;
+    print("object close login");
   }
 }

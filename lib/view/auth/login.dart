@@ -130,7 +130,6 @@ class Login extends StatelessWidget {
                                   "LOGIN",
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 20,
                                   ),
                                 ),
                               ),
@@ -150,7 +149,6 @@ class Login extends StatelessWidget {
                                     "REGISTER",
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 20,
                                     ),
                                   ),
                                 )),

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:profmoonv2/controller/splashController.dart';
 
 class Splash extends StatelessWidget {
-  final splashController = Get.put(SplashController());
+  SplashController splashController = Get.put(SplashController());
 
   @override
   Widget build(BuildContext context) {
