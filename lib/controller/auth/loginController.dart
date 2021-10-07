@@ -17,14 +17,14 @@ class LoginController extends GetxController {
   LoginData? data;
   var secure = true.obs;
   final storage = new FlutterSecureStorage();
-  var version = ''.obs;
+  var version;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   _init() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     // version.value = packageInfo.version;
-    version.value = (await storage.read(key: 'version'))!;
+    version = await storage.read(key: 'version');
     load = false.obs;
   }
 

@@ -52,10 +52,12 @@ class Success extends StatelessWidget {
                 ),
                 Text(
                   "$balanceSend Tron",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 Text(
                   "to Wallet : ",
+                  textAlign: TextAlign.center,
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
                 ),
                 Container(

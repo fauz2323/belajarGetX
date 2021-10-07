@@ -50,10 +50,11 @@ class DetailHistory extends StatelessWidget {
               ),
               Text(
                 "$amount Tron",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
               Text(
-                (page == 'Deposit Tron') ? "from Wallet : " : "to Wallet",
+                (page == 'Deposit Tron') ? "to Wallet : " : "to Wallet",
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
               ),
               Container(
