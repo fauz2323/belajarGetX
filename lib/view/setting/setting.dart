@@ -5,7 +5,7 @@ import 'package:profmoonv2/view/setting/changePassword.dart';
 import 'package:profmoonv2/view/setting/changePin.dart';
 
 class Setting extends StatelessWidget {
-  final settingController = Get.put(SettingController());
+  SettingController settingController = Get.put(SettingController());
   Setting({Key? key}) : super(key: key);
 
   @override
@@ -167,6 +167,25 @@ class Setting extends StatelessWidget {
                             ),
                             onPressed: () {
                               Get.to(() => ChangePin());
+                            },
+                          ),
+                          TextButton(
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              width: width * 70 / 100,
+                              child: Center(
+                                  child: (settingController.sendValue.value)
+                                      ? Text("Sending...")
+                                      : Text("Send Pin Transaction")),
+                              decoration: BoxDecoration(
+                                  border:
+                                      Border.all(width: 1, color: Colors.blue),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                            ),
+                            onPressed: () {
+                              settingController.sendValue.value = true;
+                              settingController.send();
                             },
                           ),
                         ],
