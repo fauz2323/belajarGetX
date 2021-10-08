@@ -54,7 +54,7 @@ class HistoryDepoView extends StatelessWidget {
                                     '${depoHistoryController.dataList.first.history[i].wallet.substring(0, 8)}...${depoHistoryController.dataList.first.history[i].wallet.substring(depoHistoryController.dataList.first.history[i].wallet.length - 4, depoHistoryController.dataList.first.history[i].wallet.length)}',
                                     overflow: TextOverflow.ellipsis,
                                   ),
-                                  Text(DateFormat('dd-mm-yyy ~ kk:mm').format(
+                                  Text(DateFormat('d-M-y ~ kk:mm').format(
                                       depoHistoryController
                                           .dataList.first.history[i].createdAt))
                                 ],

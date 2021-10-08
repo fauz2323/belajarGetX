@@ -54,7 +54,7 @@ class HistoryWd extends StatelessWidget {
                                     '${historyWDController.dataList.first.history[i].wallet.substring(0, 8)}...${historyWDController.dataList.first.history[i].wallet.substring(historyWDController.dataList.first.history[i].wallet.length - 4, historyWDController.dataList.first.history[i].wallet.length)}',
                                     overflow: TextOverflow.ellipsis,
                                   ),
-                                  Text(DateFormat('dd-mm-yyy ~ kk:mm').format(
+                                  Text(DateFormat('d-M-y ~ kk:mm').format(
                                       historyWDController
                                           .dataList.first.history[i].createdAt))
                                 ],
