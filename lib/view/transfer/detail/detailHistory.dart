@@ -72,7 +72,7 @@ class DetailHistory extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Date: "),
-                    Text(DateFormat('dd-mm-yyy ~ kk:mm').format(date)),
+                    Text(DateFormat('dd-M-yyy ~ kk:mm').format(date)),
                   ],
                 ),
               ),

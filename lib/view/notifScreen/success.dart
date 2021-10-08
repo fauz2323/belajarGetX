@@ -7,7 +7,7 @@ import 'package:profmoonv2/view/home/homeApp.dart';
 class Success extends StatelessWidget {
   final balanceSend;
   final wallet;
-  String formatedDate = DateFormat('d/m/y').format(Get.arguments);
+  String formatedDate = DateFormat('d/M/y').format(Get.arguments);
   Success({Key? key, this.balanceSend, this.wallet}) : super(key: key);
 
   back() {
