@@ -13,7 +13,7 @@ class FormBetting extends StatelessWidget {
     return Padding(
       child: TextFormField(
         controller: controller,
-        enabled: status,
+        enabled: (status == 'paid') ? true : false,
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
           label: Text(

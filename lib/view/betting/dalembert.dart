@@ -55,6 +55,7 @@ class Dalembert extends StatelessWidget {
                           height: height * 5 / 100,
                         ),
                         FormBetting(
+                          status: status,
                           controller: dalembertController.startController,
                           name: "Start Bet",
                         ),
@@ -72,10 +73,12 @@ class Dalembert extends StatelessWidget {
                           value: dalembertController.sliderValue.value,
                         ),
                         FormBetting(
+                          status: status,
                           controller: dalembertController.ifWinController,
                           name: 'If Win',
                         ),
                         FormBetting(
+                          status: status,
                           controller: dalembertController.ifLoseController,
                           name: 'If Lose',
                         ),

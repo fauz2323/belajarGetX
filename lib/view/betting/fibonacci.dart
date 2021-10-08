@@ -58,6 +58,7 @@ class Fibonacci extends StatelessWidget {
                           height: height * 5 / 100,
                         ),
                         FormBetting(
+                          status: status,
                           controller: fibbonacciController.startController,
                           name: "Start Bet",
                         ),
@@ -77,12 +78,12 @@ class Fibonacci extends StatelessWidget {
                         FormBetting(
                           controller: fibbonacciController.ifWinController,
                           name: "If Win (Increase)",
-                          status: true,
+                          status: status,
                         ),
                         FormBetting(
                           controller: fibbonacciController.ifLoseController,
                           name: "If Lose (Decrease)",
-                          status: true,
+                          status: status,
                         ),
                         Obx(
                           () => Text(

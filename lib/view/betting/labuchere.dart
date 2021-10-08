@@ -57,7 +57,7 @@ class Labouchere extends StatelessWidget {
                         FormBetting(
                           controller: labouchereController.startController,
                           name: "Start Bet",
-                          status: true,
+                          status: status,
                         ),
                         Obx(
                           () => Text(

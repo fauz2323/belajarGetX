@@ -59,6 +59,7 @@ class Martiangle extends StatelessWidget {
                           height: height * 5 / 100,
                         ),
                         FormBetting(
+                          status: status,
                           controller: martiangleController.startController,
                           name: "Start Bet",
                         ),
@@ -92,7 +93,7 @@ class Martiangle extends StatelessWidget {
                         ),
                         FormBetting(
                           controller: martiangleController.ifloseController,
-                          status: true,
+                          status: status,
                           name: 'If Lose',
                         ),
 
