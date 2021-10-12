@@ -67,7 +67,8 @@ class FibbonacciProsesController extends GetxController {
             balance1.value = double.parse(jsonData['ballance']['Balance']);
             jsonData['warna'] = Colors.black;
             print(jsonData['result']['message']);
-            profit.value = profit.value + reset.value;
+            profit.value =
+                  profit.value + (jsonData['result']['payOut'] - reset.value);
 
             if (number == 0) {
               //reset = widget.start * data[number];

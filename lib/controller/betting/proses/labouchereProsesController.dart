@@ -65,7 +65,8 @@ class LabouchereProsesController extends GetxController {
 
               data.removeLast();
               data.removeAt(0);
-              profit.value = profit.value + reset.value;
+              profit.value =
+                  profit.value + (jsonData['result']['payOut'] - reset.value);
               graphPosition.value++;
               reset.value = data[0] + data.last;
             } else {
@@ -73,7 +74,8 @@ class LabouchereProsesController extends GetxController {
               jsonData['warna'] = Colors.black;
               betting.add(Betting.fromJson(jsonData));
               graphPosition.value++;
-              profit.value = profit.value + reset.value;
+              profit.value =
+                  profit.value + (jsonData['result']['payOut'] - reset.value);
               reset.value = double.parse(Get.arguments['start']);
             }
             balance1.value = double.parse(jsonData['ballance']['Balance']);

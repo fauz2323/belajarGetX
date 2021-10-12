@@ -29,7 +29,7 @@ class SplashController extends GetxController {
           return http.Response('error', 500);
         });
 
-        print(res.statusCode);
+        print(version);
         if (res.statusCode == 500) {
           Get.off(() => ErrorPage());
         } else {
