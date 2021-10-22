@@ -43,6 +43,7 @@ class ForgotPassController extends GetxController {
     };
     final response = await http.post(uri, body: body);
     final data = json.decode(response.body);
+    print(data);
     if (response.statusCode == 200) {
       load.value = false;
       Get.back();

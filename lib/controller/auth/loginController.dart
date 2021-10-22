@@ -40,7 +40,7 @@ class LoginController extends GetxController {
     var jsonvar;
     print("masuk sini");
     final response = await http.post(uri, body: body);
-    print(response.statusCode);
+    print(response.body);
     if (response.statusCode == 200) {
       data = LoginData.fromJson(json.decode(response.body));
       jsonvar = json.decode(response.body);
